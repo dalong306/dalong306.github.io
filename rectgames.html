@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/base.css">
+	<style>
+
+	    td {
+	    	width: 60px;
+	    	height: 60px;
+	    }
+
+	    .active {
+	    	background-color: yellow;
+	    }
+    </style>
+</head>
+<body>
+    <table border="1">
+    	
+    </table>
+	<script>
+         var table = document.querySelector("table"),
+             size = 5,
+             list = [],
+             html = "";
+             //追加tr td
+             for(var i = 0; i < size; i++){
+             	html += "<tr>";
+             	for(var j = 0; j < size; j++){
+                     html += "<td></td>";
+                     
+             	}
+               html += "</tr>";
+             }
+			 table.innerHTML = html;
+
+            //设置单元格的value
+  			for(var i = 0; i < size; i++){
+  				 list[i] = [];
+             	for(var j = 0; j < size; j++){
+                     list[i][j] = 0;
+             	}
+             }
+             
+              //初始化
+			  list[0][0] = 1;
+              setColor(0, 0);   
+         
+           //设置选中状态 
+           function setColor(i, j){
+             	if(list[i][j]){
+             		table.rows[i].cells[j].className = "active";
+
+             	}else{
+					table.rows[i].cells[j].className = "";
+             	}
+             }
+
+           //click
+           table.onclick = function(e){
+                
+           		var m = e.target.parentNode.rowIndex,
+           		n = e.target.cellIndex;
+           		list[m][n] = 1 - list[m][n];
+           		setColor(m, n); 
+           		//-1 0 1 十字架标识 
+                for(var i = -1; i <= 1; i++){
+                	for(var j = -1; j <= 1; j++){
+                		var x = m + i;
+                		var y = n + j;
+                		if(x>=0 && x<size && y>=0 && y<size && (i*i+j*j==1) ){//i*i+j*j == 1规律
+                			list[x][y] = 1 - list[x][y];
+                			setColor(x, y); 
+                		}
+                	}
+                }
+
+           }
+             
+
+	</script>
+</body>
+</html>
