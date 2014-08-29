@@ -34,9 +34,7 @@
 ######git log –since –before 根据日期过滤提交记录
 ######git log -p 显示每个提交引入的补丁
 ######git log –stat 显示每个提交引入的改动的差值统计
-######touch 1211111
-######touch 1211111
-
+######touch 创建文件
 
 
 
