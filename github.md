@@ -10,12 +10,17 @@
 
 ###### git init 创建一个 Git 仓库
 ######git clone 复制一个 Git 仓库
+######touch 创建文件
 ######git add 添加文件到缓存
+######git rm 将文件从缓存区移除
+######git pull 从远端仓库提取数据并尝试合并到当前分支
+######git commit 记录缓存内容的快照  $ git commit -m "注释"
+######git push 推送你的新分支与数据到某个远端仓库
+
 ######git status 查看你的文件在工作目录与缓存的状态 
 ######git diff 显示已写入缓存与已修改但尚未写入缓存的改动的区别
-######git commit 记录缓存内容的快照  $ git commit -m "注释"
 ######git reset HEAD 取消缓存已缓存的内容
-######git rm 将文件从缓存区移除
+
 ######git branch 列出可用的分支
 ######git branch (branchname) 创建新分支
 ######git checkout -b (branchname) 创建新分支，并立即切换到它
@@ -27,14 +32,14 @@
 ######git remote add 为你的项目添加一个新的远端仓库
 ######git remote rm 删除现存的某个别名
 ######git fetch 从远端仓库下载新分支与数据  
-######git pull 从远端仓库提取数据并尝试合并到当前分支
-######git push 推送你的新分支与数据到某个远端仓库
+
+
 ######git log –author 只寻找某个特定作者的提交
 ######git log –since –before 根据日期过滤提交记录
 ######git log –since –before 根据日期过滤提交记录
 ######git log -p 显示每个提交引入的补丁
 ######git log –stat 显示每个提交引入的改动的差值统计
-######touch 创建文件
+
 
 
 
