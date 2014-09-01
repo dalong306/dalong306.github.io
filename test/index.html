@@ -219,7 +219,7 @@
         }).on("touchend", function(e){
                   console.log(Math.abs(dy-y))
                    console.log(window.scrollY)
-        	 	if((dy-y)<0 && Math.abs(dy-y) > 150){
+        	 	if((dy-y)<0 && window.scrollY < 100){
         	 		$.ajax({
         	 			type: "get",
         	 			url: "data/comment.html",
