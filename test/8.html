@@ -81,7 +81,10 @@
 	</div>
 
 </div> -->
-
+				<div id="listDiv" class="pr" style="width:100%;height:40px;display:none;">
+					<img src="images/1.jpg" alt="" width="100%" height="40" style="position:absolute;left:0;top:0;">
+					<div id="load" style="position:absolute;left:45%;top:10px; color:#FFF;">1111</div>
+				</div>
 		<div class="free-bottom mt10" id="J_scrollLoad">
 		<!-- 	<ul class="title list-tab">
 			<li class="cur"><a href="javascript:void(0);">畅销</a></li>
@@ -89,7 +92,7 @@
 			<li><a href="javascript:void(0);">价格<em class="down"></em></a></li>
 		</ul> -->
 			<div class="nav-item list-count">
-				<div id="load" style="margin:20px auto; text-align:center;"></div>
+				
 				<div class="introduce-wrap">
 					<ul id="listUL">
 						<li>
@@ -316,6 +319,7 @@
   
         $("#list").on("touchstart", function(e){
                dy = getPos(e, "pageY");
+             
                $("#load").html( "下拉加载");
         }).on("touchmove", function(e){
 				y = getPos(e, "pageY");
@@ -323,10 +327,15 @@
 				if(Math.abs(dy-y) > w/2){
 					$("#load").html("释放加载");
 				}
+			if((dy-y)<0){
+				  $("#listDiv").show();
+			}else{
+				 $("#listDiv").hide();
+			}
 				
 			
         }).on("touchend", function(e){
-
+                
         	 	if((dy-y)<0){
         	 		$.ajax({
         	 			type: "get",
@@ -335,21 +344,21 @@
         	 				   $("#load").html("加载中");
         	 			},
         	 			success: function(data){
-        	 					// 对应选项卡的内容方法
+    	 					// 对应选项卡的内容方法
 							$("#J_scrollLoad").find(".list-count").each(function(){
 								if($(this).is(":visible")){
 									// 向当前显示的选项卡插入数据
 									$(this).find("ul")[0].insertAdjacentHTML("afterBegin",data);
-										
 								}
 							});
 							 $("#load").html("");
 
         	 			}
-        	 		})
+        	 		});
+        	 		 $("#listDiv").hide();
 					
 				}else{
-
+                   
 				}
         });
        
