@@ -10,77 +10,14 @@
 	<link rel="stylesheet" type="text/css" href="style/base.css" media="all">
 	<link rel="stylesheet" type="text/css" href="style/book.css" media="all">
 	<title>列表</title>
+
 </head>
-<body style="margin-top:-250px">
+<body >
 	
-	<!-- 标题 [[-->
-<!-- 	<div class="book-title">
-   <a href="#" class="back"><i></i></a>东方玄幻
-</div> -->
-	<!-- 标题 ]]-->
+
+
 	<!-- 列表 [[ -->
 	<section style="overflow-y:auto;-webkit-overflow-scrolling:touch;" id="list">
-	<div class="bookList-wrap" >
-<!-- 		<div class="floor floor-Orange" >
-	<p href="#" class="title">精品推荐</p>
-	<div id="J_recommend">
-		<div class="scroll-wrap">
-			<ul class="nav fix">
-				<li>
-					<div class="align">
-						<a href="#">
-							<img src="images/b4.jpg" class="filter-img" width="81" height="108" />
-							<p class="ft15">1镜子镜子镜子镜子</p>
-							<p class="c7">顾城</p>
-						</a>
-					</div>
-					<div class="align">
-						<a href="#">
-							<img src="images/b4.jpg" class="filter-img" width="81" height="108"/>
-							<p class="ft15">1镜子镜子镜子镜子</p>
-							<p class="c7">顾城</p>
-						</a>
-					</div>
-					<div class="align">
-						<a href="#">
-							<img src="images/b4.jpg" class="filter-img" width="81" height="108" />
-							<p class="ft15">1镜子镜子镜子镜子</p>
-							<p class="c7">顾城</p>
-						</a>
-					</div>
-				</li>
-				<li>
-					<div class="align">
-						<a href="#">
-							<img src="images/b4.jpg" class="filter-img" width="81" height="108" />
-							<p class="ft15">2镜子镜子镜子镜子</p>
-							<p class="c7">顾城</p>
-						</a>
-					</div>
-					<div class="align">
-						<a href="#">
-							<img src="images/b4.jpg" class="filter-img" width="81" height="108"/>
-							<p class="ft15">2镜子镜子镜子镜子</p>
-							<p class="c7">顾城</p>
-						</a>
-					</div>
-					<div class="align">
-						<a href="#">
-							<img src="images/b4.jpg" class="filter-img" width="81" height="108" />
-							<p class="ft15">2镜子镜子镜子镜子</p>
-							<p class="c7">顾城</p>
-						</a>
-					</div>
-				</li>
-			</ul>
-		</div>
-		<ul class="num-wrap">
-			<li class="cur"></li>
-			<li></li>
-		</ul>
-	</div>
-
-</div> -->
 				<div id="listDiv" class="pr" style="width:100%;height:250px;">
 					<img src="images/1.jpg" alt="" width="100%" height="250" style="position:absolute;left:0;top:0;">
 					<div id="load" style="position:absolute;left:45%;top:120px; color:#FFF;">1111</div>
@@ -88,11 +25,7 @@
 
 
 		<div class="free-bottom mt10" id="J_scrollLoad">
-		<!-- 	<ul class="title list-tab">
-			<li class="cur"><a href="javascript:void(0);">畅销</a></li>
-			<li><a href="javascript:void(0);">新书</a></li>
-			<li><a href="javascript:void(0);">价格<em class="down"></em></a></li>
-		</ul> -->
+	
 			<div class="nav-item list-count">
 				
 				<div class="introduce-wrap">
@@ -262,61 +195,12 @@
 	<!-- 列表 ]] -->
 
 	<script type="text/javascript">
-		//异步载入js文件，by 12050231 and minify
-		var lazyJs=function(){var h=document,a,i=[],c=[],b;function f(j,m){var d,k;e();if(j.src){j.src=j.src.constructor===Array?j.src:[j.src];for(var l=0;l<j.src.length;l++){if(j.src[l].constructor!==Array){j.src[l]=[j.src[l]]}c.push(j.src[l])}}i=c.shift();a=a||h.getElementsByTagName("head")[0];j.src=i;for(var l=0;l<j.src.length;l++){k=j.src[l];d=h.createElement("script");d.src=k;d.type="text/javascript";if(b.ie){d.onreadystatechange=function(){var n=this.readyState;if(n==="loaded"||n==="complete"){this.onreadystatechange=null;g(j,m)}}}else{d.onload=d.onerror=function(){g(j,m)}}a.appendChild(d)}}function g(d,k){var j=i;if(!j){return}j.shift();if(!j.length){if(c.length){f(d,k)}else{if(typeof k=="function"){k()}return}}}function e(){if(b){return}var d=/msie/i.test(navigator.userAgent.toLowerCase());b={ie:d}}return{init:function(d,j){f(d,j)}}}();
-		lazyJs.init({
-			src: ["script/base_book2.0.js"]
-		},function(){
-			// 回调方法
-			// 滚动效果
-			ST.Widget.SNCarousel({
-				hook : "#J_recommend",
-				slideBox: ".scroll-wrap",
-				slideUl: ".scroll-wrap .nav",
-				slideLi: ".scroll-wrap .nav li",
-				counter: ".num-wrap",
-				effect: "both",
-				cycle: 0,
-				autoplay: 0,
-				asyncLoad: true
-			});
-			$("#J_recommend .nav li").width(document.documentElement.offsetWidth);
-			$("#J_recommend .nav").width($("#J_recommend .nav li").length * document.documentElement.offsetWidth);
-			// 简单选项卡
-			ST.tabHandle({
-				wrap:".list-tab li", 
-				tabWrap:".list-count"
-			},function(value){
-				// 当前如果是价格选项卡,索引值为2
-				if($(value).index() == 2){
-					var arrow = $(value).find("em");
-					if(arrow.hasClass("up")){
-						arrow.removeClass("up");
-						// 降序排列方法代码区
 
-					}else {
-						arrow.addClass("up");
-						// 升序排列方法代码区
-					}
-				}
-			});
-			// 通用下滑加载方法
-/*			ST.Widget.ScrollLoad(function(){
-				// 异步载入数据
-				$.get("data/comment.html", function(data){
-					ST.D("#load_placeholder").innerHTML = '<a href="#" class="btn gray-btn">向上滑动查看更多</a>';
-					// 对应选项卡的内容方法
-					$("#J_scrollLoad").find(".list-count").each(function(){
-						if($(this).is(":visible")){
-							// 向当前显示的选项卡插入数据
-							$(this).find("ul").append(data);
-						}
-					});
+         window.onload = function(){
+		   	setTimeout(scrollTo, 0, 0, 250);
+		   } 
 
-				})
-			});*/
-		});
-        
+
          var dx,dy,x,y;
   
         $("#list").on("touchstart", function(e){
@@ -352,6 +236,7 @@
 
         	 			}
         	 		});
+        	 			setTimeout(scrollTo, 0, 0, 250);
         	 		
 				}else{
                    
