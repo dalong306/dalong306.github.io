@@ -217,7 +217,7 @@
 			
         }).on("touchend", function(e){
                 
-        	 	if((dy-y)<0){
+        	 	if((dy-y)<0 && Math.abs(dy-y) > w/2){
         	 		$.ajax({
         	 			type: "get",
         	 			url: "data/comment.html",
