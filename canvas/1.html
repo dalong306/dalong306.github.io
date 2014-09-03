@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" media="all" href="css/reset.css" /> <!-- reset css -->
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+
+<style>
+    body{ background-color: ivory; }
+    canvas{border:1px solid red;}
+</style>
+
+<script>
+    $(function(){
+
+        var canvas=document.getElementById("canvas");
+        var c=canvas.getContext("2d");
+
+        // set the dynamic outside the loop
+        var dynamic=10;
+
+       var dynamic = 0;
+//loop function
+function loop(){
+  var v = 10;
+  var x, y;
+  x = dynamic * 1;
+  y = dynamic * 1;
+  c.clearRect(0,0, 350,350);
+  c.fillStyle = '#87CEEB';
+  c.beginPath();
+  c.arc(x,y, 10, 0, Math.PI*2, false);
+  c.fill();
+
+  ++dynamic;
+}
+
+setInterval(loop,20);
+
+    }); // end $(function(){});
+</script>
+
+</head>
+
+<body>
+    <canvas id="canvas" width=400 height=400></canvas>
+</body>
+</html>
