@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul id="list"></ul>
+    <button id="toggle">1111</button>
+     <script type="text/javascript" src="js/libs/underscore/underscore.js"></script>
+     <script type="text/javascript" src="http://script.suning.cn/javascript/mobileweb/jquery.min.js"></script> 
+        <script type="text/javascript" src="js/libs/backbone/backbone.js"></script>
+        <script>
+/*
+                var models = Backbone.Model.extend({
+                    initialize: function(){
+
+                    }
+                });
+                var data = [{
+        name: '构建高性能Web站点',
+        price: 56.30
+},
+{
+        name: '深入分析Java Web技术内幕',
+        price: 51.80
+},
+{
+        name: '编写高质量代码:Web前端开发修炼之道',
+        price: 36.80
+},
+{
+        name: '基于MVC的JavaScript Web富应用开发',
+        price: 42.50
+},
+{
+        name: 'RESTful Web Services Cookbook中文版',
+        price: 44.30
+
+}]*/
+              /*var collections = new Backbone.Collection( data,{
+                　　　model:models 
+                initialize: function(){
+                    for(var i = 0; i < 4; i++){
+                        // this.add(new models({ info_data: "<li>" + i + "</li>"}));
+                        this.add("<li>" + i + "</li>");
+                    }
+                }
+
+                });
+            
+               console.log(collections.getByCid("c0"))*/
+        		/*var view = Backbone.View.extend({
+        			 el: "#list",
+                     initialize: function(){
+                        this.list = new collections;
+                         console.log(this.list)
+                     },
+        			 render: function(){
+                        var data = { data: this.list.toJSON() };
+                       
+        			 	this.$el.html(data);
+        			 }
+        		});
+                new view().render();*/
+
+
+               /* var  view_1 = Backbone.View.extend({
+                    initialize: function(){
+                        this.render();
+                    },
+                    render: function(){
+                        this.$el.html("hello world!");
+                    }
+                });
+                new view_1({el: "#list"})*/
+
+               /*  var  view_2= Backbone.View.extend({
+                    events:{
+                        'click button#toggle' : 'toggle'
+                    },
+                    showItem: function(e){
+                        console.log(e.target)
+                    },
+                    initialize: function(){
+                        this.render();
+                    },
+                    render: function(){
+                        this.$el.html("hello world!");
+                        return this;
+                    },
+                    toggle: function(){
+                        console.log()
+                        $("#list").toggle();
+                        return this;
+                    }
+                });
+                new view_2({el: "#list"})*/
+
+          /*      var Foo = Backbone.Model.extend({
+                    default: {
+                        name: "hello",
+                        value: "333"
+                    }
+                });
+                var foo = new Foo({name: "world", value: "344"});
+                console.log(foo.get("name"))*/
+               /* var foo = new Foo;
+                foo.set({name: "world", value:"876"});*/
+               // $("#list").text(JSON.stringify(foo.toJSON()));
+
+            /*   var Tasks  = Backbone.Model.extend({
+                    initialize: function(){
+                        this.on("change:name", function(model){
+                            alert("new name is:" + model.get("name"));
+                        });
+                    }
+               });
+               var t = new Tasks({tid: "333", name: "oooo", state: "working"});
+               t.set({name: "xxx"});*/
+               var AppRouter = Backbone.Router.extend({
+                    routes: {
+                        "index": "index",
+                        "task/:id": "task",
+                        "*acts": "tasklist"
+                    },
+                    index: function(){
+                        alert("index");
+                    },
+                    tasklist: function(action){
+                        alert(action);
+                    },
+                    task: function(id){
+                        alert(id)
+                    }
+               });
+               var app = new AppRouter;
+               Backbone.history.start();
+        </script>
+</body>
+</html>

@@ -41,6 +41,14 @@
 ######git log –stat 显示每个提交引入的改动的差值统计
 
 
+######创建文件存储GIT用户名和密码
+>touch .git-credentials
+>vim .git-credentials
+>https://{username}:{password}@github.com
+######添加Git Config 内容
+>git config --global credential.helper store
+
+
 
 
 

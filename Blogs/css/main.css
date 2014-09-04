@@ -1,0 +1,67 @@
+/* 此文件不要私自修改 */
+/* reset */
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td,section,article,aside,header,footer,nav,dialog,figure,hgroup{margin:0;padding:0;}
+table {border-collapse:collapse;border-spacing:0}
+h1,h2,h3,h4,h5,h6{font-size:100%;}
+ul,ol,li{list-style:none}
+em,i{font-style:normal}
+img{border:0;max-width:100%;}
+input,img{vertical-align:middle;}
+input:focus,a:focus{outline:none;}
+a{color:#333;text-decoration:none;}
+html{font-size:12px;}
+/* Site Global */
+body{background:#EDEDEF;line-height:1.5;color:#333;font-family: "Microsoft YaHei"}
+.w{width:928px !important;margin:0 auto;}
+.layout{margin:10px;-webkit-box-sizing:border-box;}
+.pdlayout{padding:10px;}
+.fix:after{display:block; content:''; clear:both; visibility:hidden;}
+.cl{clear:both;}
+.fl{float:left}
+.fr{float:right;}
+.block{display:block;}
+.dib{display:inline-block;}
+.hide{display:none}
+.mt20{margin-top:20px !important;}
+.mt10{margin-top:10px !important;}
+.mt15{margin-top:15px !important;}
+.mtb10{margin:10px 0 !important;}
+.mt5{margin-top:5px !important;}
+.mr10{margin-right:10px !important;}
+.ti10{text-indent:10px;}
+.tr{text-align:right;}
+.tc{text-align:center;}
+.f12{font-size:1rem !important;}
+.f14{font-size:1.16rem !important;}
+.f15{font-size:1.25rem !important;}
+.f16{font-size:1.33rem !important;}
+.f20{font-size:1.66rem !important;}
+.pa{position:absolute;}
+.pr{position:relative;}
+.gray6{color:#666;}
+.gray9{color:#999;}
+.a1{color:#aaa;}
+.vm{position:absolute;top:50%;-webkit-transform: translateY(-50%);}
+.bold{font-weight:700;}
+.of{overflow:hidden;word-wrap:break-word;word-break:break-all;white-space:nowrap;text-overflow:ellipsis;}
+.wb{word-wrap:break-word;word-break:break-all;text-overflow:ellipsis;}
+.snPrice{color:#d00;}
+.snPrice em{padding-left:2px;}
+img.liprice{height:20px !important;width:auto !important;}
+
+
+
+.header{height:80px;background:#24292C;line-height:80px;color:#FFF;}
+.logo{font-size:28px;}
+.h-nav{font-size:14px;}
+.h-nav li{float:left;position:relative;top:15px;width:100px;text-align:center;}
+.h-nav a{color:#999;}
+.h-nav a:hover,.h-nav li.cur a{color:#FFF;}
+.h-nav li.cur:after{content:"";position:absolute;left:50%;bottom:7px;width:14px;height:14px;margin-left:-7px;background:#EDEDEF;-webkit-transform:rotate(-45deg);}
+
+.index-main{}
+.index-list{width:680px;margin-top:20px;}
+.index-box{width:500px;padding:20px;background:#FFF;}
+.index-list img{margin-left:20px;}
+.index-comment{margin-top:10px;}
+.index-comment a{margin-right:10px;color:#aaa;}
