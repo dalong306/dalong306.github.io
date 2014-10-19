@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta content="telephone=no" name="format-detection" />
+	<title>小家电</title>
+	<link rel="stylesheet" type="text/css" href="style/base.css">
+	<link rel="stylesheet" type="text/css" href="style/active.css">
+
+</head>
+<body >
+	<!-- 头部快捷导航 [[ -->
+	<section class="sn-nav sn-block">
+		<div class="sn-nav-back"><a class="sn-iconbtn" href="#">返回</a></div>
+		<div class="sn-nav-title of">小家电</div>
+		<div class="sn-nav-right">
+			<div class="quick-icon-area" onclick="$('#sub-title').toggle();$('#screenIfmNav').toggle();"><a class="quick-icon" href="javascript:void(0);"></a></div>
+			<div class="sub-list hide" id="sub-title">
+				<a href="#"><span class="quick-nav index-icon">首页</span></a>
+				<a href="#"><span class="quick-nav search-icon">搜索</span></a>
+				<a href="#"><span class="quick-nav cart-icon">购物车</span></a>
+				<a href="#"><span class="quick-nav cate-icon">全部分类</span></a>
+				<a href="#"><span class="quick-nav yigou-icon">我的易购</span></a>
+			</div>
+		</div>
+	</section>
+	<section id="screenIfmNav" class="screenIfm" onclick="$('#sub-title').toggle();$(this).hide();" style="opacity:0;"></section>
+	<!-- ]] 头部快捷导航 -->
+
+	<section class="mb10 ">
+		<a href="#"><img src="images/12.png" alt="" width="100%"></a>
+	</section>
+
+	<section class=" pr c2 ac-instroduce">
+		<em>本周最新热销TOP30，手机下单即享八款专属风暴数
+		数量有限，赶紧抢购吧亲！数量有限，赶紧抢购吧亲
+		10.13-10.15</em>
+        <i></i>
+	</section>
+
+	<section class="ac-floor ac-one" >
+		<ul class="ac-list lazyimg fix" id="ac-list">
+			<li>
+				<a href="#">
+					<div class="pro-img">
+						<img data-src="http://image5.suning.cn/b2c/catentries/000000000106040162_1_200x200.jpg">
+					</div>
+				
+					<div class="pro-text">
+						<p class="ac-clamp">
+							先锋手机 4G  note4 先 锋手机 4G  note4先锋手机 4G  note4 先 锋手机 4G  note4
+						</p>
+						<div class="wbox mt5">
+							<div class="wbox-flex c1 f15 ">¥243.00</div> <s class="c2 line25">¥212.00</s> 
+						</div>
+					</div>
+					<div class="pro-hot"></div>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<div class="pro-img">
+						<img data-src="http://image5.suning.cn/b2c/catentries/000000000106040162_1_200x200.jpg" >
+					</div>
+					<div class="pro-text">
+						<p class="ac-clamp">
+							先锋手机 4G  note4 先 锋手机 4G  note4先锋手机 4G  note4 先 锋手机 4G  note4
+						</p>
+						<div class="wbox mt5">
+							<div class="wbox-flex c1 f15 ">¥243.00</div> <s class="c2 line25">¥212.00</s> 
+						</div>
+					</div>
+
+				</a>
+			</li>
+		</ul>
+		
+		<div class="pdlayout" id="ac-btn">
+			<a href="javascript:void(0);" class="ac-btn ac-btn-a" >点击加载更多</a>
+			<!-- <a href="javascript:void(0);" class="ac-btn ac-btn-b" >正在加载中</a> -->
+			<!-- <a href="javascript:void(0);" class="ac-btn ac-btn-c hide">已经看完了</a> -->
+		</div>
+	</section>
+
+	
+<section class="ac-back-top"><a href="#" ></a></section>	
+
+<script type="text/javascript" src="script/libs/zepto.min.js"></script>
+<script type="text/javascript" src="script/active.js"></script>  
+<script>
+    Active.listLoadMore();
+</script>	
+</body>
+</html>
