@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.content{width:100px;height:100px;}
+	</style>
+</head>
+<body>
+	<div class="content" contenteditable="true">
+		   
+	</div>
+	<script>
+/*		var content = document.querySelector(".content");
+		content.onblur = function(){
+			 console.log(content.innerHTML)
+		}*/
+
+	var fso = new ActiveXObject("Scripting.FileSystemObject");
+	var a = fso.CreateTextFile("c:\\testfile.txt", true);
+	a.WriteLine("This is a test.");
+	a.Close();
+	</script>
+</body>
+</html>
