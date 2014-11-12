@@ -82,45 +82,18 @@ server.listen(8124, function(){
 })*/
 
 
-// var dgram = require("dgram");
-// var server = dgram.createSocket("udp4");
-// server.on("message", function(msg, rinfo){
-//     console.log("server got:" + msg + "from" + rinfo.address + ":" + rinfo.port);
-// });
-// server.on("listening", function(){
-//     var address = server.address(); 
-//     console.log("server listening" + address.address + ":" + address.port);
-// });
+var dgram = require("dgram");
+var server = dgram.createSocket("udp4");
+server.on("message", function(msg, rinfo){
+    console.log("server got:" + msg + "from" + rinfo.address + ":" + rinfo.port);
+});
+server.on("listening", function(){
+    var address = server.address(); 
+    console.log("server listening" + address.address + ":" + address.port);
+});
 
-// var message = new Buffer("aaaa");
-// server.send(message, 0, message.length, 41234, "localhost", function(err, bytes){
-//     server.close();
-// })
+var message = new Buffer("aaaa");
+server.send(message, 0, message.length, 41234, "localhost", function(err, bytes){
+    server.close();
+})
 //server.bind(41234);
-
-
-var http = require("http");
-var util = require("util");
-http.createServer(function(req, res){
-     console.log('Request received: ');
-   // util.log(util.inspect(req)) // this line helps you inspect the request so you can see whether the data is in the url (GET) or the req body (POST)
-  //  util.log('Request recieved: \nmethod: ' + req.method + '\nurl: ' + req.url) // this line logs just the method and url
- 
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    req.on('data', function (chunk) {
-        console.log(chunk);
-    });
-    req.on("end", function(data){
-        console.log(data)
-    })
-    res.end('callback(\'{\"msg\": \"OK\"}\')');
-}).listen(3000);
-console.log("Server runing at port: 3000");
-
-// var express = require('express');
-// var app = express.createServer();
-// var url = require("url");
-// app.get("/", function(req, res){
-//     var queryObj = url.parse(req.url, true).query;
-//     res.send()
-// })

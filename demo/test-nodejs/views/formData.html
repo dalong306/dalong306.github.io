@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>formData</title>
+	
+</head>
+<body>
+	<form action="" id="form1">
+		<span name="222">3333</span>
+		<input type="file" >
+	</form>
+	<script>
+		var formdata = new FormData(document.querySelector("#form1"));
+       		formdata.append("name1","lldfdf");
+       		var xhr = new XMLHttpRequest();
+       		xhr.open('GET', 'http://10.24.64.26:3000/');
+       		xhr.send(formdata);
+       		xhr.onreadystatechange = function(){
+       			if(xhr.readyState == 4 && xhr.status == 200){
+       				alert("完成")
+       			}else{
+       				alert("失败")
+       			}
+       		}
+			console.log(formdata)
+	</script>
+</body>
+</html>
