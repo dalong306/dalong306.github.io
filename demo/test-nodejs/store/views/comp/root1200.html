@@ -1,0 +1,15 @@
+<script type="text/javascript">
+	/*
+	 * 宽窄屏切换
+	 * */
+	var bigscreen = false;
+	var bodyTag = document.getElementsByTagName("body")[0],
+			bodyClassName = bodyTag.getAttribute("className") || bodyTag.getAttribute("class");
+	bodyClassName = bodyClassName ? bodyClassName+" " : "";
+	if ( screen.width>=1200 ) {
+		bigscreen = true;
+		bodyTag.className = bodyClassName+"root1200";
+	} else {
+		bodyTag.className = bodyClassName+"root1000";
+	}
+</script>

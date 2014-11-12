@@ -1,0 +1,194 @@
+{{include '../comp/header'}}
+<script src="{{settings.resDomain}}/project/store/js/city.js"></script>
+<script>
+    window.store = window.store || {};
+    window.store.cache = window.store.cache || {};
+
+    $(function() {
+        var  domain =  sn.cookieDomain || location.host;
+
+        $('#areaSel').snCity({
+            eventType: 'click',
+            cityFn: function(d) {
+                var cityId,  url;
+                window.store.cache.cityId = d.city.cid;
+                window.store.cache.districtId = '';
+                // checkStoreInfo.call(this);
+            },
+            districtFn: function(d) {
+                var cityId, districtId, url;
+                window.store.cache.cityId = d.city.cid;
+                window.store.cache.districtId = d.district.cid;
+                checkStoreInfo.call(this)
+            },
+            fn:function(o){
+                
+            },
+            isOnlyCity:true
+        })
+
+        $('.first-screen').on('mouseenter',function(){
+            checkStoreInfo.call(this)
+        })
+
+        function checkStoreInfo(){
+            var url, cityId, districtId, storeUrl;
+            var $this = $(this);            
+            window.store.cache = window.store.cache || {};
+            cityId = window.store.cache.cityId || window.store.temp.city.cid;
+
+            if(!window.store.isAll){
+                districtId = window.store.cache.districtId ? ('-' + window.store.cache.districtId) : '';
+            }else{
+                districtId = '';
+            }
+
+            storeUrl = '{{settings.apiDomain}}'+'/stores/' + cityId + districtId +'.html'
+
+            $('.hovering-sub').hide();
+
+            $.ajax({
+                url:'//' + domain + '/api/stores/' + cityId +  districtId +'---' + '.json ',
+                success:function(data){
+                    if(data.total == 0){
+                        $('.storbtn-serch').attr({'href':'javascript:void(0)','target':''})
+                    }else{
+                        $('.storbtn-serch').attr({'href':storeUrl,'target':'_blank'})
+                    }
+                }
+            })
+            
+        }
+
+        $('.storbtn-serch').on('click',function(){
+            var url, cityId, districtId;
+            var $this = $(this);            
+
+            if($('.js-city').text()=='请选择'){
+                $('.hovering-sub').text('请选择城市').show();
+                return false;
+            }else{
+                $('.hovering-sub').hide();
+                if($this.attr('href')=='javascript:void(0)'){
+                    $('.hovering-sub').text('该地区暂无门店').show();
+                }
+            }
+            // 重新设置cookie
+            snCity.API.setCookie(store.temp)
+            if (store.isAll) {
+                $.cookie('storeCity', '1', { path:'/'})
+            }else{
+                $.removeCookie('storeCity',{path:'/'})
+            }
+        })
+    })
+</script>
+<!-- first screen [[ -->
+<div class="first-screen">
+    <!-- banner [[ -->
+    <div class="bnr" id="bnr">
+        <div class="bnr-lst">
+            <div class="bnr-item"  data-limit-y="5" style="background-color:#131734;">
+                {{each slide as value i}}
+                {{if i==0}}
+                <div class="bnr-inner layer bnr-fore" data-depth="0.20" style="background-image: url({{settings.cmsImgDomain}}{{value.bgimgUrl}});"></div>
+                <div class="bnr-inner layer bnr-after" data-depth="0.60" style="background-image: url({{settings.cmsImgDomain}}{{value.imgUrl}});"></div>
+                {{/if}}
+                {{/each}}
+            </div>
+        </div>
+        <!--
+        <ol class="bnr-index">
+            <li></li>
+        </ol>
+        -->
+    </div>
+    <!-- ]] banner -->
+    <!--[if IE 6]>
+    <script>
+        DD_belatedPNG.fix(".bnr-inner");
+    </script>
+    <![endif]-->
+    <div class="hovering">
+        <div class="hovering-wrap">
+            <h1>苏宁，您身边最可信赖的购物专家</h1>
+            <div class="hovering-line"></div>
+            <dl class="hovering-search clearfix">
+                <dt>寻找苏宁门店</dt>
+                <dd>
+                    <div class="area-sel" id="areaSel"></div>
+                    <a href="###" class="storbtn storbtn-serch"><i class="storico storico-search"></i></a>
+                </dd>
+            </dl>
+            <p class="hovering-sub">请选择城市</p>
+        </div>
+        <div class="hovering-bg"></div>
+    </div>
+</div>
+<!-- first screen ]]-->
+<!-- svr [[ -->
+<div class="svr wrapper" id="screenSvr">
+    <div class="svr-inner">
+        <div class="svr-head">
+            <div class="border"></div>
+            <div class="svr-tit" id="svrTit">
+                {{each serviceList as value i}}
+                <h2 data-index="{{i+1}}"><em>{{value.sTitle}}</em></h2>
+                {{/each}}
+            </div>
+        </div>
+        <!-- svr detail [[ -->
+        <div class="svr-detail">
+            <div class="svr-detail-txt" id="svrDetailTxt">
+                {{each serviceList as value i}}
+            	<p data-index="{{i+1}}">
+            		{{value.sDescription}}
+            	</p>
+            	{{/each}}
+            </div>
+            <div class="svr-detail-tar" id="svrDetailTar">
+                {{each serviceList as value i}}
+                {{if value.sLinkUrl}}
+                <a href="{{value.sLinkUrl}}" title="" target="_blank" data-index="{{i+1}}">{{value.sLinkName}}</a>
+                {{/if}}
+                {{/each}}
+            </div>
+        </div>
+        <!-- svr detail ]]-->
+        <!-- svr lst [[ -->
+        <div class="svr-lst-wrap">
+            <ul class="clearfix" id="svrLstWrap">
+                {{each serviceList as value i}}
+                <li data-index="{{i+1}}">
+                    <div class="svr-item-wrap">
+                    {{if value.sLinkUrl}}
+                        <a href="{{value.sLinkUrl}}" target="_blank">
+                            <img src="{{settings.cmsImgDomain}}{{value.sImg}}" alt="{{value.sTitle}}">
+                        </a>
+                    {{else}}
+                        <img src="{{settings.cmsImgDomain}}{{value.sImg}}" alt="{{value.sTitle}}">
+                    {{/if}}
+                    </div>
+                    <div class="svr-lst-tit">
+                        
+                        <h2 {{if i==0}}class="on" style="top: -44px;"{{/if}}>
+                        {{if value.sLinkUrl}}
+                            <a href="{{value.sLinkUrl}}" target="_blank">
+                                <em>{{value.sTitle}}</em>
+                                <em class="current">{{value.sTitle}}</em>
+                            </a>
+                        {{else}}
+                            <em>{{value.sTitle}}</em>
+                            <em class="current">{{value.sTitle}}</em>
+                        {{/if}}
+                        </h2>
+                    </div>
+                </li>
+                {{/each}}
+            </ul>
+        </div>
+        <!-- svr lst ]]-->
+    </div>
+</div>
+<!-- svr ]]-->
+{{include '../comp/footer'}}

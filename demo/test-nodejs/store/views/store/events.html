@@ -1,0 +1,42 @@
+{{include '../comp/header'}}
+<div class="stor-sel">
+    <div class="wrapper">
+        <h2>提供谷歌眼镜体验服务的门店</h2>
+        <div class="stor-sel-sub"><a href="/" target="_blank">寻找其他门店&nbsp;&gt;</a></div>
+    </div>
+</div>
+<!-- store wrap [[ -->
+<div class="stor-wrap wrapper">
+    <!-- head [[ -->
+    <div class="stor-head">
+        <div class="stor-hd-con">
+            <dl class="stor-hd-item stor-filter clearfix">
+                <dt>筛选条件：</dt>
+                <dd>
+                    <label><input type="checkbox" data-id='L001' /><span>停车场</span></label>
+                    <label><input type="checkbox" data-id='L002' /><span>苏宁互联营业厅</span></label>
+                    <label><input type="checkbox" data-id='L003' /><span>自提点</span></label>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <!-- ]] head -->
+    <!-- store con tab [[ -->
+    {{include '../comp/_list'}}
+    <!-- ]] pages -->
+</div>
+<script src="{{settings.resDomain}}/project/store/js/template.js"></script>
+<script src="{{settings.resDomain}}/project/store/js/app.js"></script>
+<script>
+    window.ctx = window.ctx || {};
+    var arr = ['{{page.params[4]}}'];
+    snStore.filter(arr,function(d){
+        $('#main').html(d)
+    })
+    snStore.paging(['', '','','',arr.join(',')],function(d){
+        $('#main').html(d)
+    })
+</script>
+
+
+{{include '../comp/footer'}}

@@ -1,0 +1,83 @@
+{{include '../comp/header'}}
+<script type="text/javascript">
+    window.store = window.store || {}; window.store.cache = {cityId:{{cityId}},districtId:{{districtId}}};
+</script>
+<div class="stor-sel">
+    <div class="wrapper">
+        <h3>门店及网点列表</h3>
+        <div class="drop-wrap">
+            <div class="area-sel" id="areaSel"></div>
+        </div>
+    </div>
+</div>
+<!-- store wrap [[ -->
+<div class="stor-wrap wrapper">
+    <!-- head [[ -->
+    <div class="stor-head">
+        <ul class="stor-hd-tab clearfix" id="storHdTab">
+            <li class="current"><a href="javascript:void(0)"><i class="storico storico-local"></i><span>门店和自提点</span></a></li>
+            <li><a href="/services/{{param}}.html"><i class="storico storico-local"></i><span>服务网点</span></a></li>
+        </ul>
+        <div class="stor-hd-con" id="storHdCon">
+            <dl class="stor-hd-item stor-filter clearfix">
+                <dt>筛选条件：</dt>
+                <dd>
+                    <label><input type="checkbox" data-id='L001' /><span>停车场</span></label>
+                    <label><input type="checkbox" data-id='L002' /><span>苏宁互联营业厅</span></label>
+                    <label><input type="checkbox" data-id='L003' /><span>自提点</span></label>
+                </dd>
+            </dl>
+        </div>
+    </div>
+    <!-- ]] head -->
+    <!-- store con tab [[ -->
+    {{include '../comp/_list'}}
+    <!-- ]] pages -->
+</div>
+<script src="{{settings.resDomain}}/project/store/js/template.js"></script>
+<script src="{{settings.resDomain}}/project/store/js/city.js"></script>
+<script src="{{settings.resDomain}}/project/store/js/app.js"></script>
+<script>
+    $(function() {
+        $('#areaSel').snCity({
+            eventType: 'click',
+            alwaysFire: true,
+            alwaysAll: false,
+            provinceFn:function(o){
+                // console.log(o)
+            },
+            cityFn: function(o) {
+                window.store.cache.cityId = o.city.cid;
+                window.store.cache.districtId = '';
+                // snStore.change([o.city.cid,'','','',''],function(d){
+                //     $('#main').html(d)
+                // })
+                // 修改服务网点的地址
+                // $('#storHdTab li:eq(1) a').attr('href','/services/'+ o.city.cid  +'.html')
+                $('.stor-filter input').removeAttr('checked')
+
+            },
+            districtFn: function(o) {
+                window.store.cache.cityId = o.city.cid;
+                window.store.cache.districtId = window.store.isAll ? '': o.district.cid;
+                var ccid = o.city.cid;
+                var dcid = window.store.isAll?'' : '-' + o.district.cid;
+                window.location.href = "{{settings.apiDomain}}/stores/" + ccid + dcid + '.html';
+                return false;
+            }
+        })
+
+        window.ctx = window.ctx || {};
+        var arr = ['{{page.params[4]}}'],
+        cityId = window.ctx.cid,
+        districtId = $.cookie('storeCity') == 1 ? '' : window.ctx.did;
+        snStore.filter(arr,function(d){
+            $('#main').html(d)
+        })
+
+        snStore.paging([cityId, districtId,'','',arr],function(d){
+            $('#main').html(d)
+        })
+    })
+</script>
+{{include '../comp/footer'}}

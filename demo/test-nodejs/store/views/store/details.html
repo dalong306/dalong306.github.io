@@ -1,0 +1,150 @@
+{{include '../comp/header'}}
+<div class="store-banner">
+	<div class="wrapper store-banner-container clearfix">
+		<!-- 门店图片 [[ -->
+		<div class="store-pic">
+			<img src="{{thumb}}" title="{{store.storeName}}"/>
+		</div>
+		<!-- 门店图片 ]] -->
+		<!-- 门店信息 [[ -->
+		<div class="store-info">
+			<div class="store-info-content">
+				<div class="store-info-title">
+					<a class="map-btn" href="javascript:;"><i></i>查看地图</a>
+					<h1>苏宁{{store.storeName}}</h1>
+				</div>
+				<div class="store-info-detail">
+					<div class="detail-list">
+						<span class="detail-title">门店地址：</span>
+						<p class="detail-content">{{store.storeAddress}}</p>
+					</div>
+					<div class="detail-list">
+						<span class="detail-title">联系电话：</span>
+						<p class="detail-content">{{store.tel}}</p>
+					</div>
+					<div class="detail-list">
+						<span class="detail-title">营业时间：</span>
+						<p class="detail-content">
+							周一至周五 {{store.workdayBeginTime}}-{{store.workdayEndTime}}<br/>
+							周六至周日 {{store.weekendBeginTime}}-{{store.weekendEndTime}}
+						</p>
+					</div>
+					<div class="detail-list">
+						<span class="detail-title">公交线路：</span>
+						<p class="detail-content">{{store.busChannel}}</p>
+					</div>
+					<div class="detail-list">
+						<span class="detail-title">地铁线路：</span>
+						<p class="detail-content">{{store.subwayChannel}}</p>
+					</div>
+					<div class="detail-list">
+						<span class="detail-title">停车服务：</span>
+						<p class="detail-content">{{store.parkingLotsInfo}}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 门店信息 ]] -->
+	</div>
+</div>
+
+
+<div class="store-services">
+	<!-- 服务列表区标题 [[ -->
+	<h3 class="store-services-title wrapper">
+		本店为您提供以下服务
+	</h3>
+	<!-- 服务列表区标题 ]] -->
+	<!-- 服务图标列表 [[ -->
+	<div class="wrapper">
+		<div class="services-list clearfix">
+			<ul class="clearfix">
+			{{open=true}}
+			{{each store.serviceInfoList as v i}}
+			{{if v.serviceLogo}}
+				{{if v.serviceNo!='S003'}}
+				<li class="{{v.serviceLogo}} {{if open==true}}open{{else}}close{{/if}}">
+					<i class="list-pic"></i>
+					<h4>{{v.serviceName}}</h4>
+					<span>详情<i class="arrow"></i></span>
+				</li>
+				{{open=false}}
+				{{else}}
+				<li class="{{v.serviceLogo}} close">
+					<i></i>
+					<h4>{{v.serviceName}}</h4>
+					<a href="{{v.linkAddress}}" class="v-reserv">立即预约</a>
+				</li>
+				{{/if}}
+			{{/if}}
+			{{/each}}
+			</ul>
+		</div>
+	</div>
+	<!-- 服务图标列表 ]] -->
+	<!-- 服务介绍区 [[ -->
+	<div class="store-services-detail">
+		<div class="store-services-detail-content wrapper">
+			<ul class="store-services-detail-list">
+			{{show=true}}
+			{{each store.serviceInfoList as v i}}
+				{{if v.serviceLogo}}
+					{{if v.serviceNo=='S003'}}
+					<li>&nbsp;</li>
+					{{else}}
+					<li{{if show==true}} class="show" style="display:block;" {{/if}}>
+						<p>{{v.serviceDesc}}</p>
+					</li>
+					{{show=false}}
+					{{/if}}
+				{{/if}}
+			{{/each}}
+			</ul>
+		</div>
+		<div class="detail-arrow detail-arrow-outer"></div>
+		<div class="detail-arrow detail-arrow-inner"></div>
+	</div>
+	<!-- 服务介绍区 ]] -->
+</div>
+
+<script type="text/html" id="tplPop">
+	<div class="store-map" id="storeMap">
+		<div class="store-map-hd">
+			<h3>
+				<i></i>
+				地图详情
+			</h3>
+			<a class="store-map-close" href="javascript:;">&#215;</a>
+		</div>
+		<div class="store-map-content">
+			<div id="baiduMap"></div>
+		</div>
+		<div class="store-map-bg"></div>
+	</div>
+</script>
+<script>
+	$(document).on('click', '.map-btn', function () {
+		$.getScript('http://api.map.baidu.com/getscript?v=2.0&ak=RkRYFmgRzEBheTcGFHjyXifQ&services=&t={{settings.timestamp}}', function(){
+			(function () {
+				var zoomLevel = 18;
+				var map = new BMap.Map("baiduMap");
+				var point = new BMap.Point({{store.gpsLongitude}}, {{store.gpsLatitude}});
+				map.centerAndZoom(point, zoomLevel);
+
+				map.addControl(new BMap.NavigationControl());
+				map.addControl(new BMap.ScaleControl());
+				map.addControl(new BMap.OverviewMapControl());
+				map.enableScrollWheelZoom();
+
+				var marker = new BMap.Marker(point);
+				map.addOverlay(marker);
+
+				var zoom = setTimeout(function () {
+					map.centerAndZoom(point, zoomLevel);
+				}, 200);
+			})();
+		});
+	});
+</script>
+
+{{include '../comp/footer'}}

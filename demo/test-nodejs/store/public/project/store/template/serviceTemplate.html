@@ -1,0 +1,70 @@
+<div class="store-con" id="storCon">
+        <!-- store list [[ -->
+            <div class="store-list">
+                <!-- store item [[ -->
+
+                {{if data.length != 0 }}
+                    {{each data}}
+                    <div class="store-item svr-item">
+                        <div class="store-item-tit">
+                            <h2>{{$value.networkName}}</h2>
+                        </div>
+                        <div class="store-detail">
+                            <dl>
+                                <dt>门店地址：</dt>
+                                <dd title="{{$value.address}}">{{$value.address}}</dd>
+                            </dl>
+                            <dl>
+                                <dt>联系电话：</dt>
+                                <dd title="{{$value.phone}}">{{$value.phone}}</dd>
+                            </dl>
+                            <dl>
+                                <dt>营业时间：</dt>
+                                <dd title="周一至周五 {{$value.openingTime}}     周六至周日 {{$value.openingTime}}"><span>周一至周五 {{$value.openingTime}}</span><span>周六至周日 {{$value.openingTime}}</span></dd>
+                            </dl>
+                        </div>
+                        <div class="svr-range">
+                            <h4>售后鉴定范围</h4>
+                            {{each $value.serviceList[0].brandlist}}
+                            <dl>
+                                <dt>{{$value.catagory}}：</dt>
+                                <dd>{{$value.brand}}</dd>
+                            </dl>
+                            {{/each}}}
+                        </div>
+                        <!-- <div class="store-more"><a href="#" target="_blank" class="detail">查看详情&gt;&gt;</a></div> -->
+                    </div>
+                    {{/each}}
+                {{else}}
+                <div class="no-store">
+                    <img src="/project/store/images/storeico_noinfo.gif" class="face-apology" />
+                    <strong>非常抱歉，本地区暂无服务网点！</strong>
+                </div>
+                {{/if}}
+                <!-- end if -->
+            </div>
+            <!-- ]] store list -->
+        </div>
+        <!-- ]]store con tab -->
+        <!-- pages [[ -->
+       <!--  <div class="sn-page">
+            <a href="javascript:void(0)" class="sn-page-prev sn-page-prev-disable"><i class="sn-arrow-right"></i><span>上一页</span></a>
+                <a href="javascript:void(0)" class="sn-page-item sn-page-current">1</a>
+                {{if page.list.length == 0}}
+                    <a href="javascript:void(0)" class="sn-page-next sn-page-next-disable"><span>下一页</span><i class="sn-arrow-left"></i></a>
+                {{else}}
+                    {{each page.list}}
+                        {{if page.list.length < 7 }}
+                            <a href="javascript:void(0)" class="sn-page-item">{{$value}}</a>
+                        {{else}}
+                            {{if $value < 7}}
+                                <a href="javascript:void(0)" class="sn-page-item">{{$value}}</a>
+                            {{else if $value == page.total}}
+                                <span class="sn-page-ellipsis">...</span>
+                                <a href="javascript:void(0)" class="sn-page-item">{{page.total}}</a>
+                            {{/if}}
+                        {{/if}}
+                    {{/each}}
+                    <a href="javascript:void(0)" class="sn-page-next"><span>下一页</span><i class="sn-arrow-left"></i></a>
+                {{/if}}
+        </div> -->

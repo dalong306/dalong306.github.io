@@ -1,0 +1,70 @@
+{{if settings.env=='prd'}}
+<script type="text/javascript">
+	//全局变量
+	var sn = sn || {
+		"context": "/emall",
+		"domain": "www.suning.com",
+		"storeId": "10052",
+		"catalogId": "10051",
+		"memberDomain": "member.suning.com",
+		"online": "online.suning.com",
+		"cookieDomain": "store.suning.com",
+		"cityDomain": "ipservice.suning.com",
+		"categoryId": "10051",
+		"searchDomain": "http://search.suning.com/emall/",
+		"resDomain":'http://store.suning.com'
+	};
+</script>
+{{else if settings.env=='pre'}}
+<script type="text/javascript">
+	//全局变量
+	var sn = sn || {
+		"context": "/emall",
+		"domain": "b2cpre.cnsuning.com",
+		"storeId": "10052",
+		"catalogId": "10051",
+		"memberDomain": "memberpre.cnsuning.com",
+		"online": "online.suning.com",
+		"cookieDomain": "storepre.cnsuning.com",
+		"cityDomain": "ipservicepre.cnsuning.com",
+		"categoryId": "10051",
+		"searchDomain": "http://searchpre.cnsuning.com/emall/",
+		"resDomain":'http://precss.cnsuning.cn'
+		// "resDomain":'http://storepre.cnsuning.com'
+	};
+</script>
+{{else if settings.env=='sit'}}
+<script type="text/javascript">
+	//全局变量
+	var sn = sn || {
+		"context": "/emall",
+		"domain": "b2csit.cnsuning.com",
+		"storeId": "10052",
+		"catalogId": "10051",
+		"memberDomain": "membersit.cnsuning.com",
+		"online": "online.suning.com",
+		"cookieDomain": "storesit.cnsuning.com",
+		"cityDomain": "ipservicesit.cnsuning.com",
+		"categoryId": "10051",
+		"searchDomain": "http://searchsit.cnsuning.com/emall/",
+		"resDomain":'http://sit1css.suning.cn'
+	};
+</script>
+{{else}}
+<script type="text/javascript">
+	//全局变量
+	var sn = sn || {
+		"context": "/emall",
+		"domain": "www.suning.com",
+		"storeId": "10052",
+		"catalogId": "10051",
+		"memberDomain": "member.suning.com",
+		"online": "online.suning.com",
+		"cookieDomain": "storedev.cnsuning.com:3000",
+		"cityDomain": "ipservice.suning.com",
+		"categoryId": "10051",
+		"searchDomain": "http://search.suning.com/emall/",
+		"resDomain":'http://storedev.cnsuning.com:3000'
+	};
+</script>
+{{/if}}

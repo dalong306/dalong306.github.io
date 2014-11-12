@@ -1,0 +1,10 @@
+{
+  "name": "SVNF",
+  "description": "Suning view layer Node.js framework",
+  "version": "0.0.1",
+  "author": {
+    "name": "pangnate",
+    "email": "voteon@qq.com",
+    "url": "http://weibo.com/pangnate"
+  }
+}

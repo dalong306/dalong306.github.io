@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>{{pageTitle}}</title>
+	<meta name="keywords" content="{{pageKeywords}}"/>
+	<meta name="description" content="{{pageDescription}}"/>
+	{{include '../comp/sn.config'}}
+	{{#prfs_resources}}
+	<link rel="stylesheet" href="{{settings.resDomain}}/project/store/css/storeChannel.css?v={{settings.timestamp}}"/>
+</head>
+<body>
+<span rel="{{server_ip}}:{{port}}" style="font-size:0;"></span>
+{{#prfs_header}}
+<script>
+    document.getElementById("G_CHANNEL_LOGO").innerHTML = '<a href="/"><img src="{{settings.resDomain}}/project/store/images/chd_logo.png?v={{settings.timestamp}}"></a>';
+</script>
