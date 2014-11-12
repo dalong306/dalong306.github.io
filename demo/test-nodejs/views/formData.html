@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>formData</title>
-	
+	<script src="http://script.suning.cn/javascript/mobileweb/jquery.min.js?v=2.3.9"></script>
 </head>
 <body>
 	<form action="" id="form1">
@@ -11,19 +11,44 @@
 		<input type="file" >
 	</form>
 	<script>
-		var formdata = new FormData(document.querySelector("#form1"));
-       		formdata.append("name1","lldfdf");
-       		var xhr = new XMLHttpRequest();
-       		xhr.open('GET', 'http://10.24.64.26:3000/');
-       		xhr.send(formdata);
-       		xhr.onreadystatechange = function(){
-       			if(xhr.readyState == 4 && xhr.status == 200){
-       				alert("完成")
-       			}else{
-       				alert("失败")
-       			}
-       		}
-			console.log(formdata)
+	var form = new FormData(document.querySelector("#form1"));
+   		form.append("name1","lldfdf");
+	$.ajax({
+		url: "http://localhost:3000/",
+		type: "POST",
+		processData:false, 
+		dataType: "jsonp", 
+		jsonpCallback:'callback',  
+		data: form,
+		success: function(data){
+				console.log(data+"data")
+		},
+		error: function(err){
+			console.log(err+"errr")
+		}
+
+	})
+	// .done(function(data){
+	// 		console.log(data)
+	// }).fail(function(err){
+	// 		console.log(err)
+	// });
+
+
+
+		// var formdata = new FormData(document.querySelector("#form1"));
+  //      		formdata.append("name1","lldfdf");
+  //      		var xhr = new XMLHttpRequest();
+  //      		xhr.open('GET', 'http://localhost:3000/');
+  //      		xhr.send(formdata);
+  //      		xhr.onreadystatechange = function(){
+  //      			if(xhr.readyState == 4 && xhr.status == 200){
+  //      				alert("完成")
+  //      			}else{
+  //      				alert("失败")
+  //      			}
+  //      		}
+		// 	console.log(formdata)
 	</script>
 </body>
 </html>
