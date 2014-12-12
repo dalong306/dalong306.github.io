@@ -1,0 +1,529 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta content="telephone=no" name="format-detection" />
+	<title>苏宁易购手机版 – 家用电器、手机、电脑、红孩子母婴、缤购化妆、日用百货</title>
+	<link rel="stylesheet" type="text/css" href="style/indexAll.css">
+	<script>
+		var sn = sn || {"cityId":"9017","cookieDomain":'.cnsuning.com'};
+	</script>
+	<script type="text/javascript" src="http://m.suning.com/RES/wap/common/script/lib/zepto/1.1.4/zepto.min.js"></script>
+	<script>
+	   var floorlist = {};
+		$.ajax({
+		//	url:"http://m.suning.com/wapdata/homepage/get_30000_11000_2.4.5.html",
+			url:"data/m.json",
+			type: "post",
+			dataType:"json"
+			
+		})
+		.done(function(data){
+			floorlist = data.data;
+            console.log(floorlist);
+             var render = template.compile(document.getElementById('floorList').innerHTML);
+			var html = render(floorlist);
+			//console.log(html)
+			$("#indexWrap").append(html);
+		}).fail(function(err){
+             console.log("111")
+		});
+	</script>
+</head>
+<body>
+	<div id="Sn_Loading" class="sn-html5-loading fixedLoading">
+		<div class="blueball"></div>
+		<div class="orangeball"></div>
+	</div>
+
+   	<!-- 顶部下载提示 -->
+	<div class="top-dload w pr">
+		 <a href="javascript:void(0);" class="close" onclick="this.parentNode.style.display = 'none'"></a>
+		 <a href="javascript:void(0);" class="click" onclick="downloadApp();"><img src="images/top.png"  alt=""></a>
+		
+	</div>
+
+
+	<!-- common head navigation -->
+	<div class="index-nav wbox sticky" id="searchFixed">
+		<img src="images/suning.png" class="logo">
+		<div class="wbox-flex search-bar pr">
+			<form>
+				<input type="search" placeholder="搜索" autocomplete="off" />
+			</form>
+		</div>
+		<div class="my-cart pr">
+			<a id="cartnum" href="http://m.suning.com/cart1/gateway/cart1View.do">
+				<span class="count"><em>99<i>+</i></em></span>
+			</a>
+		</div>
+		
+	</div>
+
+
+	 <!-- 搜索[[ -->  
+		<div class="sn-search-box" id="searchBox">
+			 <div class="sn-search-top wbox">
+			 	<div class="wbox-flex pr">
+			 		<div class="wbox sn-search-input">
+			 			<form onsubmit="searchclick();return false;" action="">
+		 					<input type="search" class="wbox-flex" autocomplete="off">
+			 			</form>
+			 			<!-- <i class="sn-search-ico"></i> -->
+			 		</div>
+			 	</div>
+			 	 <i class="sn-search-close">取消</i>
+			 </div>
+               
+             <div class="sn-search-hots">
+             	 <a href="#">白酒</a>
+             	 <a href="#">热水器</a>
+             	 <a href="#">海尔洗衣机</a>
+             	 <a href="#">白酒</a>
+             	 <a href="#">电脑</a>
+             	 <a href="#">小米</a>
+             	 <a href="#">4G手机</a>
+             	 <a href="#">海信彩电</a>
+             	 <a href="#">方太油烟机</a>
+             </div>
+
+            <div class="sn-search-item">
+             	 <ul>
+             	 	<li><a href="#">55555555555555555555555555555555555555555555555555555555555555</a></li>
+             	 	<li><a href="#">手机</a></li>
+             	 	<li><a href="#">iphon5s 手机</a></li>
+             	 	<li><a href="#">手机</a></li>
+             	 	<li><a href="#">iphon5s 手机</a></li>
+             	 	<li><a href="#">手机</a></li>
+             	 	<li><a href="#">iphon5s 手机</a></li>
+             	 	<li><a href="#">手机</a></li>
+             	 	<li><a href="#">iphon5s 手机</a></li>
+             	 	<li><a href="#">手机</a></li>
+             	 </ul>
+             </div> 
+
+		</div>
+
+
+<!-- 搜索]] -->
+
+	<div class="index-wrap hide" id="indexWrap">
+	
+	  <script type="text/html" id="floorList">
+		<!-- floor 1-->
+		<div class="floor w" id="floor">
+
+         
+
+			
+			{{if floorlist.length > 0 }}
+        
+            {{each floorlist as value i}}
+            
+   
+ 		    {{if  value.templateid == -88  }}
+ 		    {{value.modulelist}}
+ 		    {{value.floorname}}
+			<div class="app01 floor-area">
+					<!-- focus  -->
+					<div class="index-slide w lazyimg" id="J_index_slide" data-res='{{list}}'></div>
+					<!-- focus end -->
+			</div>
+            {{/if}}
+           
+             {{if  value.templateid == -99  }}
+              
+			<div class="app02 floor-area border-1px border-down ovf">
+					<!-- navigation  -->
+					<div class="w nav-carousel pr "  id="navCarousel_box" data-res='{{value.modulelist}}'>
+						
+					</div>
+
+			</div>
+             {{/if}}
+
+            {{if  value.templateid == 20001  }}
+            <div class="app03 floor-area mt12 border-1px border-upd lazyimg ovf">
+				<ul class="app03-pic01 wbox">
+					
+					<li><a href="{{value.modulelist[0].targeturl}}"><img data-src="{{value.modulelist[0].bgimg}}" alt=""></a></li>
+					<li><a href="{{value.modulelist[1].targeturl}}"><img data-src="{{value.modulelist[1].bgimg}}" alt=""></a></li>
+					<li><a href="{{value.modulelist[2].targeturl}}"><img data-src="{{value.modulelist[2].bgimg}}" alt=""></a></li>
+					
+				</ul>
+			</div>
+			 {{/if}}
+
+             {{if  value.templateid == 20002  }}
+        
+			<div class="app04  floor-area mt12 border-1px border-upd lazyimg ovf">
+				<ul class="app04-pic01">
+					<li><a href="{{value.modulelist[0].targeturl}}"><img data-src="{{value.modulelist[0].bgimg}}" alt=""></a></li>
+					<li>
+						<dl>
+							<dd><a href="{{value.modulelist[1].targeturl}}" ><img data-src="{{value.modulelist[1].bgimg}}" alt=""></a></dd>
+							<dd><a href="{{value.modulelist[2].targeturl}}"><img data-src="{{value.modulelist[2].bgimg}}" alt=""></a></dd>
+						</dl>
+					</li>
+				</ul>
+
+				<ul class="app04-pic02 wbox">
+					<li><a href="{{value.modulelist[3].targeturl}}"><img data-src="{{value.modulelist[3].bgimg}}" alt=""></a></li>
+					<li><a href="{{value.modulelist[4].targeturl}}"><img data-src="{{value.modulelist[4].bgimg}}" alt=""></a></li>
+					<li><a href="{{value.modulelist[5].targeturl}}"><img data-src="{{value.modulelist[5].bgimg}}" alt=""></a></li>
+				</ul>
+			</div>
+			 {{/if}}
+           
+             {{if  value.templateid == 20003  }}
+            <div class="app05 floor-area mt12 border-1px border-upd lazyimg ">
+				<a href="{{value.modulelist[0].targeturl}}"><img data-src="{{value.modulelist[0].bgimg}}" alt="" width="100%"></a>
+			</div>
+	 		{{/if}}
+
+	 		{{if  value.templateid == 20004  }}
+            <div class="app06 floor-area mt12 border-1px border-upd  lazyimg ovf">
+				<ul class="app06-pic01">
+					<li><a href="{{value.modulelist[0].targeturl}}"><img data-src="{{value.modulelist[0].bgimg}}" alt=""></a></li>
+					<li><a href="{{value.modulelist[1].targeturl}}"><img data-src="{{value.modulelist[1].bgimg}}" alt=""></a></li>
+				</ul>
+			</div>
+			{{/if}}
+
+			{{if  value.templateid == 20005  }}
+			<div class="app07 floor-area mt12 border-1px border-upd lazyimg">
+				<a href="{{value.modulelist[0].targeturl}}"><img data-src="{{value.modulelist[0].bgimg}}" alt="" width="100%"></a>
+			</div>
+			{{/if}}
+
+            {{if  value.templateid == -20006  }}
+			<div class="app08  floor-area mt12 border-1px border-upd ovf">
+				<ul class="app08-pic01">
+					<li><a href="{{value.modulelist[0].targeturl}}"><img data-src="{{value.modulelist[0].bgimg}}" alt=""></a></li>
+					<li>
+						<dl>
+							<dd><a href="{{value.modulelist[0].targeturl}}" ><img data-src="{{value.modulelist[0].bgimg}}" alt=""></a></dd>
+							<dd>
+								<a href="{{value.modulelist[0].targeturl}}"><img data-src="{{value.modulelist[0].bgimg}}" alt=""></a>
+								<a href="{{value.modulelist[0].targeturl}}"><img data-src="{{value.modulelist[0].bgimg}}" alt=""></a>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+			</div>
+			{{/if}}
+            
+            {{if  value.templateid == 20007  }}
+			<div class="app09  floor-area mt12 border-1px border-upd lazyimg ovf">
+				<ul class="app09-pic01">
+					<li>
+						<dl>
+							<dd><a href="{{value.modulelist[0].targeturl}}" ><img data-src="{{value.modulelist[0].bgimg}}" alt=""></a></dd>
+							<dd>
+								<a href="{{value.modulelist[0].targeturl}}"><img data-src="{{value.modulelist[0].bgimg}}" alt=""></a>
+								<a href="{{value.modulelist[0].targeturl}}"><img data-src="{{value.modulelist[0].bgimg}}" alt=""></a>
+							</dd>
+						</dl>
+					</li>
+					<li><a href="{{value.modulelist[0].targeturl}}"><img data-src="{{value.modulelist[0].bgimg}}" alt=""></a></li>
+				</ul>
+			</div>
+			{{/if}}
+
+            {{if  value.templateid == 20008  }}
+			<div class="app10 floor-area mt12 border-1px border-upd lazyimg ovf">
+				<ul class="app10-pic01">
+					<li>
+						<a href="{{value.modulelist[0].targeturl}}" ><img data-src="{{value.modulelist[0].bgimg}}" alt=""></a>
+						<a href="{{value.modulelist[0].targeturl}}" ><img data-src="{{value.modulelist[0].bgimg}}" alt=""></a>
+					</li>
+					<li>
+						<a href="{{value.modulelist[0].targeturl}}" ><img data-src="{{value.modulelist[0].bgimg}}" alt=""></a>
+						<a href="{{value.modulelist[0].targeturl}}" ><img data-src="{{value.modulelist[0].bgimg}}" alt=""></a>
+					</li>
+				</ul>
+			</div>
+			{{/if}}
+
+			{{if  value.templateid == -20009  }}
+			<div class="app11  floor-area mt12 border-1px border-upd lazyimg ovf">
+				<ul class="app11-pic01">
+					<li><a href="{{value.modulelist[0].targeturl}}"><img data-src="{{value.modulelist[0].bgimg}}" alt=""></a></li>
+					<li>
+						<dl>
+							<dd><a href="{{value.modulelist[0].targeturl}}" ><img data-src="{{value.modulelist[0].bgimg}}" alt=""></a></dd>
+							<dd><a href="{{value.modulelist[0].targeturl}}"><img data-src="{{value.modulelist[0].bgimg}}" alt=""></a></dd>
+							<dd><a href="{{value.modulelist[0].targeturl}}"><img data-src="{{value.modulelist[0].bgimg}}" alt=""></a></dd>
+						</dl>
+					</li>
+				</ul>
+			</div>
+			{{/if}}
+
+		     {{if  value.templateid == 20020  }}
+			<div class="app12 floor-area mt12 border-1px border-upd lazyimg ovf">
+				<div class="app12-box" >
+					<ul class="app12-pic" >
+						<li >
+						    {{each value.modulelist as value i}}
+				         		<a href="{{value.targeturl}}" >
+									<img data-src="{{value.bgimg}}" alt="" >
+								</a>
+						    {{/each}}
+					
+						</li>
+					
+					</ul>
+				</div>
+			</div>
+			{{/if}}
+
+			 {{if  value.templateid == 20021  }}
+			<div class="app14 floor-area mt12 border-1px border-upd lazyimg ovf">
+
+				<div class="floor-title border-1px border-down pr">{{value.modulelist[0].modulename}}
+                {{if value.modulelist[0].targeturl != "" }}
+				  <a href="{{value.modulelist[0].targeturl}}">更多</a>
+				{{/if}}
+				</div>
+				<ul class="app14-pic01">
+					<li>
+						<a href="{{value.modulelist[1].targeturl}}" ><img data-src="{{value.modulelist[1].bgimg}}" alt=""></a>
+						<a href="{{value.modulelist[2].targeturl}}" ><img data-src="{{value.modulelist[2].bgimg}}" alt=""></a>
+					</li>
+					<li>
+						<a href="{{value.modulelist[3].targeturl}}" ><img data-src="{{value.modulelist[3].bgimg}}" alt=""></a>
+						<a href="{{value.modulelist[4].targeturl}}" ><img data-src="{{value.modulelist[4].bgimg}}" alt=""></a>
+					</li>
+					<li>
+						<a href="{{value.modulelist[5].targeturl}}" ><img data-src="{{value.modulelist[5].bgimg}}" alt=""></a>
+						<a href="{{value.modulelist[6].targeturl}}" ><img data-src="{{value.modulelist[6].bgimg}}" alt=""></a>
+					</li>
+					<li>
+						<a href="{{value.modulelist[7].targeturl}}" ><img data-src="{{value.modulelist[7].bgimg}}" alt=""></a>
+						<a href="{{value.modulelist[8].targeturl}}" ><img data-src="{{value.modulelist[8].bgimg}}" alt=""></a>
+					</li>
+					<li>
+						<a href="{{value.modulelist[9].targeturl}}" ><img data-src="{{value.modulelist[9].bgimg}}" alt=""></a>
+						<a href="{{value.modulelist[10].targeturl}}" ><img data-src="{{value.modulelist[10].bgimg}}" alt=""></a>
+					</li>
+				</ul>
+			</div>
+			{{/if}}
+
+			{{if  value.templateid == 20010  }}
+            <div class="app15 floor-area mt12 border-1px border-upd lazyimg ovf">
+            	<div class="floor-title border-1px border-down pr">{{value.modulelist[0].modulename}}
+            	  {{if value.modulelist[0].targeturl != "" }}
+            		<a href="{{value.modulelist[0].targeturl}}">更多</a>
+            	{{/if}}
+            	</div>
+				<ul class="app15-pic01">
+					<li><a href="{{value.modulelist[1].targeturl}}"><img data-src="{{value.modulelist[1].bgimg}}" alt=""></a></li>
+					<li>
+						<dl>
+							<dd><a href="{{value.modulelist[2].targeturl}}" ><img data-src="{{value.modulelist[2].bgimg}}" alt=""></a></dd>
+							<dd><a href="{{value.modulelist[3].targeturl}}"><img data-src="{{value.modulelist[3].bgimg}}" alt=""></a></dd>
+						</dl>
+					</li>
+				</ul>
+			</div>
+			{{/if}}
+
+			{{if  value.templateid == 20022  }}
+			<div class="app16 floor-area mt12 border-1px border-upd lazyimg ovf" >
+				<div class="floor-title border-1px border-down pr">{{value.modulelist[0].modulename}}
+            	  {{if value.modulelist[0].targeturl != "" }}
+            		<a href="{{value.modulelist[0].targeturl}}">更多</a>
+            	{{/if}}
+            	</div>
+				<!-- store-recommend  -->
+				<div class="store-recommend pr lazyimg"  data-res='{{value.modulelist}}'>
+				</div>
+			</div>
+			{{/if}}
+			
+          
+
+			 {{if  value.templateid == 20023  }}
+			<div class="app17 floor-area mt12 border-1px border-upd lazyimg ovf" >
+				<div class="floor-title border-1px border-down pr">{{value.modulelist[0].modulename}}
+            	{{if value.modulelist[0].targeturl != "" }}
+            		<a href="{{value.modulelist[0].targeturl}}">更多</a>
+            	{{/if}}
+            	</div>
+				<!-- brand-recommend  -->
+				<div class="w  brand-recommend pr lazyimg ovf"  data-res='{{value.modulelist}}'>
+				</div>
+			</div>
+			{{/if}}
+
+			{{if  value.templateid == 20011  }}
+			<div class="app18  floor-area mt12 border-1px border-upd lazyimg ovf">
+				<div class="floor-title border-1px border-down pr">{{value.modulelist[0].modulename}}
+            	{{if value.modulelist[0].targeturl != "" }}
+            		<a href="{{value.modulelist[0].targeturl}}">更多</a>
+            	{{/if}}
+            	</div>
+				<ul class="app18-pic01">
+					<li><a href="{{value.modulelist[1].targeturl}}"><img data-src="{{value.modulelist[1].bgimg}}" alt="" ></a></li>
+				</ul>
+				<ul class="app18-pic02">
+					<li><a href="{{value.modulelist[2].targeturl}}"><img data-src="{{value.modulelist[2].bgimg}}" alt=""></a></li>
+					<li>
+						<dl>
+							<dd><a href="{{value.modulelist[3].targeturl}}" ><img data-src="{{value.modulelist[3].bgimg}}" alt=""></a></dd>
+							<dd><a href="{{value.modulelist[4].targeturl}}"><img data-src="{{value.modulelist[4].bgimg}}" alt=""></a></dd>
+						</dl>
+					</li>
+				</ul>
+			</div>
+			{{/if}}
+
+
+			{{if  value.templateid == 20012  }}
+            <div class="app19 floor-area mt12 border-1px border-upd lazyimg ovf">
+            	<div class="floor-title border-1px border-down pr">{{value.modulelist[0].modulename}}
+            	{{if value.modulelist[0].targeturl != "" }}
+            		<a href="{{value.modulelist[0].targeturl}}">更多</a>
+            	{{/if}}
+            	</div>
+				<ul class="app19-pic01 wbox">
+					<li><a href="{{value.modulelist[1].targeturl}}"><img data-src="{{value.modulelist[1].bgimg}}" alt=""></a></li>
+					<li><a href="{{value.modulelist[2].targeturl}}"><img data-src="{{value.modulelist[2].bgimg}}" alt=""></a></li>
+					<li><a href="{{value.modulelist[3].targeturl}}"><img data-src="{{value.modulelist[3].bgimg}}" alt=""></a></li>
+				</ul>
+			</div>
+			{{/if}}
+
+ 			{{if  value.templateid == 20013  }}
+			<div class="app20  floor-area mt12 border-1px border-upd lazyimg ovf">
+				<div class="floor-title border-1px border-down pr">{{value.modulelist[0].modulename}}
+            	{{if value.modulelist[0].targeturl != "" }}
+            		<a href="{{value.modulelist[0].targeturl}}">更多</a>
+            	{{/if}}
+            	</div>
+				<ul class="app09-pic01">
+					<li>
+						<dl>
+							<dd><a href="{{value.modulelist[1].targeturl}}" ><img data-src="{{value.modulelist[1].bgimg}}" alt=""></a></dd>
+							<dd>
+								<a href="{{value.modulelist[2].targeturl}}"><img data-src="{{value.modulelist[2].bgimg}}" alt=""></a>
+								<a href="{{value.modulelist[3].targeturl}}"><img data-src="{{value.modulelist[3].bgimg}}" alt=""></a>
+							</dd>
+						</dl>
+					</li>
+					<li><a href="{{value.modulelist[4].targeturl}}"><img data-src="{{value.modulelist[4].bgimg}}" alt=""></a></li>
+				</ul>
+			</div>
+			{{/if}}
+
+			 {{if  value.templateid == 20014  }}
+			<div class="app21  floor-area mt12 border-1px border-upd lazyimg ovf">
+				<div class="floor-title border-1px border-down pr">{{value.modulelist[0].modulename}}
+            	{{if value.modulelist[0].targeturl != "" }}
+            		<a href="{{value.modulelist[0].targeturl}}">更多</a>
+            	{{/if}}
+            	</div>
+				<ul class="app08-pic01">
+					<li><a href="{{value.modulelist[1].targeturl}}"><img data-src="{{value.modulelist[1].bgimg}}" alt=""></a></li>
+					<li>
+						<dl>
+							<dd><a href="{{value.modulelist[2].targeturl}}" ><img data-src="{{value.modulelist[2].bgimg}}" alt=""></a></dd>
+							<dd>
+								<a href="{{value.modulelist[3].targeturl}}"><img data-src="{{value.modulelist[3].bgimg}}" alt=""></a>
+								<a href="{{value.modulelist[4].targeturl}}"><img data-src="{{value.modulelist[4].bgimg}}" alt=""></a>
+							</dd>
+						</dl>
+					</li>
+				</ul>
+			</div>
+			{{/if}}
+
+			{{if  value.templateid == 20015  }}
+			<div class="app22  floor-area mt12 border-1px border-upd lazyimg ovf">
+				<div class="floor-title border-1px border-down pr">{{value.modulelist[0].modulename}}
+            	{{if value.modulelist[0].targeturl != "" }}
+            		<a href="{{value.modulelist[0].targeturl}}">更多</a>
+            	{{/if}}
+            	</div>
+				<ul class="app04-pic01">
+					<li><a href="{{value.modulelist[1].targeturl}}"><img data-src="{{value.modulelist[1].bgimg}}" alt=""></a></li>
+					<li>
+						<dl>
+							<dd><a href="{{value.modulelist[2].targeturl}}" ><img data-src="{{value.modulelist[2].bgimg}}" alt=""></a></dd>
+							<dd><a href="{{value.modulelist[3].targeturl}}"><img data-src="{{value.modulelist[3].bgimg}}" alt=""></a></dd>
+						</dl>
+					</li>
+				</ul>
+
+				<ul class="app04-pic02 wbox">
+					<li><a href="{{value.modulelist[4].targeturl}}"><img data-src="{{value.modulelist[4].bgimg}}" alt=""></a></li>
+					<li><a href="{{value.modulelist[5].targeturl}}"><img data-src="{{value.modulelist[5].bgimg}}" alt=""></a></li>
+					<li><a href="{{value.modulelist[6].targeturl}}"><img data-src="{{value.modulelist[6].bgimg}}" alt=""></a></li>
+				</ul>
+			</div>
+			{{/if}}
+           
+            {{/each}}
+	
+           {{/if}}
+
+			</div>
+		</script>
+
+	</div>
+
+	<!-- 公用尾部 -->
+		<footer class="footer w">
+			<div class="tr"><a href="{{value.modulelist[0].targeturl}}" class="backTop">回顶部</a></div>
+			<ul class="list-ui-index foot-list tc">
+				<li><a href="{{value.modulelist[0].targeturl}}" class="foot1">登陆</a><a href="{{value.modulelist[0].targeturl}}" class="foot2">注册</a><a href="{{value.modulelist[0].targeturl}}" class="foot3">购物车</a></li>
+				<li><a href="{{value.modulelist[0].targeturl}}" class="foot4">电脑版</a><a href="{{value.modulelist[0].targeturl}}" class="foot5">客户端</a></li>
+			</ul>
+			<div class="tc copyright">Copyright© 2002-2014 m.suning.com</div>
+		</footer>
+		<footer class="footer w">
+			<div class="tr"><a href="{{value.modulelist[0].targeturl}}" class="backTop">回顶部</a></div>
+			<ul class="list-ui-index foot-list tc">
+				<li><a href="{{value.modulelist[0].targeturl}}" class="foot1">当前账户 : 18712322566</a><a href="{{value.modulelist[0].targeturl}}" style="padding-left:5px;">注销</a></li>
+				<li><a href="{{value.modulelist[0].targeturl}}" class="foot4">电脑版</a><a href="{{value.modulelist[0].targeturl}}" class="foot5">客户端</a></li>
+			</ul>
+			<div class="tc copyright">Copyright© 2002-2014 m.suning.com</div>
+		</footer>
+
+
+	<!-- 底部固定弹出层 [[-->
+	<div class="fix-wrap">
+		  <ul class="fix-nav">
+			  <li><a href="{{value.modulelist[0].targeturl}}"><em class="fix-index"></em>首页<i class="fr"></i></a></li>
+			  <li><a href="{{value.modulelist[0].targeturl}}"><em class="fix-car"></em>购物车<i class="fr"></i></a></li>
+			  <li><a href="{{value.modulelist[0].targeturl}}"><em class="fix-type"></em>全部分类<i class="fr"></i></a></li>
+			  <li><a href="{{value.modulelist[0].targeturl}}"><em class="fix-mySuning"></em>我的易购<i class="fr"></i></a></li>
+		  </ul>
+		 <a href="javascript:void(0);" class="fix-link" onclick="$('.fix-nav').toggleClass('show');$('{{value.modulelist[0].targeturl}}screenIfm').toggle();$(this).toggleClass('gray');"></a>
+	</div>
+	<div id="screenIfm" class="screenIfm" onclick="$('.fix-nav').removeClass('show');$('.fix-link').removeClass('gray');$(this).hide();"></div>
+
+<!-- 底部固定弹出层 ]]-->
+
+<div id="city1" style="display:none"><!-- 南京市 --></div>
+
+<script type="text/javascript">
+var _baseConfig_ = {
+	_resRoot_: '/RES',
+	_baseUrl_: '/RES/wap/common/script/res/',
+	_wapHost_: 'http://m.suning.com',
+	_base_: ''
+}
+</script>
+
+<script type="text/javascript" src="http://m.suning.com/RES/wap/common/script/module/swipe/1.1.0/swipe.js"></script>
+<script type="text/javascript" src="script/index.js"></script>
+
+
+</body>
+</html>

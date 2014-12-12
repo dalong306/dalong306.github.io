@@ -258,11 +258,11 @@ SUI.UI.AlertBox = function(opts){
 	        if(_this.getAttribute("data-src") == null){
 	                    return;
 	        }
-	        
 	        if($(this).offset().top < window.innerHeight){
 	        	_this.onerror = function(){
                  	this.src = "http://script.suning.cn/images/ShoppingArea/Common/blank.gif";
                 }
+
 	            _this.src = _this.getAttribute("data-src");
 	            _this.setAttribute("data-src","done");
 	        }
@@ -313,7 +313,7 @@ SUI.UI.AlertBox = function(opts){
 
 	var res = $("#J_index_slide")[0].dataset.res,
 		_length = JSON.parse(res).modulelist.length;
-	if( _length > 1){
+	if( _length > 0){
 		$("#J_index_slide").removeAttr("data-res");
 		var _html = '<ul class="slide_ul">'
 		+	'{{each modulelist as value index}}'
@@ -324,6 +324,7 @@ SUI.UI.AlertBox = function(opts){
 		+	'{{/if}}'
 		+	'{{/each}}'
 		+	'</ul>'
+		+	'{{if modulelist.length > 1}}'
 		+	'<ul class="index-slide-trigger nav-slide-trigger trigger">'
 		+	'{{each modulelist as value index}}'
 		+	'{{if index == 0}}'
@@ -332,7 +333,8 @@ SUI.UI.AlertBox = function(opts){
 		+		'<li></li>'
 		+	'{{/if}}'
 		+	'{{/each}}'
-		+	'</ul>';
+		+	'</ul>'
+		+	'{{/if}}';		
 		var render = template.compile(_html);
 		var html = '<div class="index-slide-box lazyimg" id="mySwipe">' + render(JSON.parse(res)) + '</div>';
 		$("#J_index_slide").html(html);
@@ -497,20 +499,16 @@ var _dianpuHTML_ = '<div class="store-recommend-box " >'
 	 opts.forEach(function(item, index){
 	 	 j += $("."+ item.id).length;
 	 });
+	 if(j==0){
+	 	lazyload("#floor");
+	 	return;
+	 }
 	    
     
 	 opts.forEach(function(item, index){
 
-       if($("."+ item.id)[0] == undefined){
-				if(i == j && index!=2 && j > 1){
-				  lazyload("#floor");
-				}
-				return;
-			}
-
-
-
       	$("."+ item.id).each(function(){
+
                 i++;
       		    var self = $(this);
 				var res = self[0].dataset.res;
@@ -555,12 +553,40 @@ var _dianpuHTML_ = '<div class="store-recommend-box " >'
 	})
 
 })([{id: "nav-carousel", html: _navHTML_},{id: "brand-recommend", html: _brandHTML_},{id: "store-recommend", html: _dianpuHTML_}]);
-		
+
+//app03	设置图片宽度
+// ;(function(){
+       
+//        if($(".app03")[0] == undefined) return;	
+
+//   		$(".app03").find("img")[0].onload = function(){
+//   			 $(".app03").find("li").height($(this).height() + "px");
+//   		}
+
+// 	    setThreeWidth($(".app03"));
+// 	    var touch = document.hasOwnProperty("ontouchstart");
+
+//         if(touch){
+//     		    window.addEventListener("orientationchange", function(e) {
+//     				 setThreeWidth($(".app03"));
+//     		    });
+//         }else{
+// 		        window.addEventListener("resize", function(e) {
+// 			    	 setThreeWidth($(".app03"));
+// 		        });
+//         }
+
+//         function setThreeWidth(obj){
+//         	obj.find("img").width((window.innerWidth > 640 ? 640 : window.innerWidth)/ 3 +"px");
+//         	obj.find("li").height(obj.find("img").eq(0).height() + "px");
+//         }
+
+// })();
 
 //楼层图片滑屏
 ;(function(){
 
-	   if($(".app12-pic")[0] == undefined) return;
+	  if($(".app12-pic")[0] == undefined) return;
 
 	  $(".app12-pic").each(function(){
 		  	var self = $(this),
@@ -571,7 +597,7 @@ var _dianpuHTML_ = '<div class="store-recommend-box " >'
 				dx = 0,//标记移动距离
 				dis = 0,//标记距离
 				scrolling = undefined,//是否滚动状态
-				w = window.innerWidth,
+				w = window.innerWidth > 640 ? 640 : window.innerWidth,
 				wrap = self.find("li"),
 				wA = wrap.find("a").width(),//a width
 				len = wrap.find("a").length,//a length
@@ -646,7 +672,7 @@ var _dianpuHTML_ = '<div class="store-recommend-box " >'
   	       setTimeout(scrollTo, 0, 0, 0);
 		   searchBar.find("input").eq(0).on("focus", function(){
 		   			$(this).blur();
-		   			//search.removeClass("sticky");
+		   			search.removeClass("sticky");
 		   			searchBox.show().find("input").eq(0).focus();
 
 		   		    $(".sn-search-hots, .sn-search-item").height((wh - 2*44) + "px");
@@ -658,13 +684,7 @@ var _dianpuHTML_ = '<div class="store-recommend-box " >'
 		   });
 
 		   searchBox.find("input").eq(0).on("focus keyup input", function(){
-
-		   	  
 		     	setTimeout(scrollTo, 0, 0, 0);
-		     	// if(search.css("position").indexOf("sticky") < 0){
-        //         	alert(window.scrollY+":"+searchTop+":"+search[0].outerHTML)
-        //         	   window.scrollY > searchTop ? search.css("position","fixed") : search.css("position","static");
-        //         }
 		     	  //$(this).val().length > 0 ? searchBox.addClass(cls) : searchBox.removeClass(cls);
 			   if($(this).val().length ==0  ){
 				   searchBox.removeClass(cls);
@@ -677,7 +697,7 @@ var _dianpuHTML_ = '<div class="store-recommend-box " >'
 		   });
 
 		   searchClose.on("click", function(){
-		   	     //search.addClass("sticky").removeAttr("style");
+		   	     search.addClass("sticky").removeAttr("style");
 		   		 searchBox.hide().removeClass(cls).find("input").eq(0).val("");
 		   		 $("html").removeClass("sn-active");
 		   		 $("body").removeAttr("style");
@@ -687,9 +707,8 @@ var _dianpuHTML_ = '<div class="store-recommend-box " >'
         //搜索固定滚动功能
   		
 		    window.addEventListener("scroll",function(){
-				//alert(1);
+				
                 if(search.css("position").indexOf("sticky") < 0){
-                	//alert(window.scrollY+":"+searchTop+":"+search[0].outerHTML)
                 	   window.scrollY > searchTop ? search.css("position","fixed") : search.css("position","static");
                 }
 

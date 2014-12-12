@@ -1,4 +1,5 @@
 /* 此文件不要私自修改 */
+/* 此文件不要私自修改 */
 /* reset */
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td,section,article,aside,header,footer,nav,dialog,figure,hgroup{margin:0;padding:0;}
 table {border-collapse:collapse;border-spacing:0}
@@ -176,11 +177,11 @@ img.liprice{height:20px !important;width:auto !important;}
 
 /*add 13011924*/
 .ovf{overflow:hidden;}
-/*.app03-pic01,*/.app04-pic01,.app04-pic02,.app06-pic01,.app08-pic01,.app08-pic01 li:last-child dd:last-child
+/*.app04-pic01,.app04-pic02,.app06-pic01,.app08-pic01,.app08-pic01 li:last-child dd:last-child
 ,.app09-pic01,.app09-pic01 li:first-child dd:last-child,.app10-pic01 li,.app11-pic01,.app14-pic01 li,.app15-pic01
 ,.app18-pic02,.app19-pic01{display:table;width:100%;overflow:hidden;}
 
-/*.app03-pic01 li,*/.app04-pic01 li,.app04-pic02 li,.app06-pic01 li,.app08-pic01 li,.app08-pic01 li:last-child dd:last-child a
+.app04-pic01 li,.app04-pic02 li,.app06-pic01 li,.app08-pic01 li,.app08-pic01 li:last-child dd:last-child a
 ,.app09-pic01 li,.app09-pic01 li:first-child dd:last-child a,.app10-pic01 li a,.app11-pic01 li,.app14-pic01 li a,.app15-pic01 li
 ,.app18-pic02 li,.app19-pic01 li{display:table-cell;vertical-align:top;}
 
@@ -197,7 +198,7 @@ img.liprice{height:20px !important;width:auto !important;}
 ,.app08-pic01 li:last-child dd:last-child,.app14-pic01 li,.app10-pic01 li a{border-top:1px solid #e0e0e0;}
 .app15-pic01 li:last-child dd:first-child a,.app18-pic01 li:first-child a,.app18-pic02 li:last-child dd:first-child a
 ,.app09-pic01 li:first-child dd:first-child{border-bottom:1px solid #e0e0e0;}
-/*.app03-pic01 li:last-child a,*/.app04-pic02 li:last-child,.app12-pic li a:last-child{border-right:0 none;}
+.app04-pic02 li:last-child,.app12-pic li a:last-child{border-right:0 none;}
 .app08-pic01 li:first-child,.app09-pic01 li:last-child{width:37.5%;}
 .app08-pic01 li:last-child,.app09-pic01 li:first-child{width:62.5%;}
 .app14-pic01 li:first-child,.app10-pic01 li:first-child a,.app11-pic01 li:last-child dd:first-child{border-top:0 none;}
@@ -213,7 +214,7 @@ img.liprice{height:20px !important;width:auto !important;}
 .app12-box{background:#FFF;overflow:hidden;}
 .app12-pic{height:150px;overflow:hidden;}
 .app12-pic li{height:150px;-webkit-transition:-webkit-transform 0ms ease-in-out;-webkit-transform:translate3d(0px, 0px, 0px);}
-
+*/
 
 .app03 img{min-height:140px;}
 .app08 img,.app09 img,.app10 img,.app20 img,.app21 img,.app15 img{min-height:75px;}
