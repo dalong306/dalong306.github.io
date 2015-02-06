@@ -1,0 +1,92 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta content="telephone=no" name="format-detection" />
+	<title>热销榜</title>
+	<link rel="stylesheet" type="text/css" href="http://m.suning.com/RES/wap/common/style/base/base1.0.css">
+	<link rel="stylesheet" type="text/css" href="style/hotSale.css">
+</head>
+<body>
+   
+
+
+	<section class="sale-hot w">
+         <!--sale-nav-->
+        <section class="sn-nav">
+    	    <div class="sn-nav-back"><a href="#" class="sn-iconbtn">返回</a></div>
+    	    <div class="sn-nav-title of">热销榜</div>
+    	</section>
+	    <!--sale-tab-->
+		<section class="sale-tab">
+			 <ul id="saleTabData"> </ul>
+			  <script id="saleTab" type="text/html">
+			       
+				        {{each}}
+					     <li class="cur">1奶粉奶粉奶粉奶粉</li>
+						{{/each}}
+				   
+			  </script>
+				
+			
+		</section>
+	    <!--sale-count-->
+	    <section class="sale-count">
+	     	 <!--sale-son-tab-->
+	    	 <div class="sale-son-tab fix">
+	    	      <ul id="saleSonTabData"></ul>
+	    	      <script id="saleSonTab" type="text/html">
+			       
+				        {{each}}
+					      	<li class="cur"><span class="sale-text">11iPhoneiPhoneiPhoneiPhoneiPhone</span></li>
+						{{/each}}
+				   
+			      </script>
+	    	 	
+	    	 </div>
+	    	 <!--sale-son-count-->
+	    	 <div class="sale-son-count">
+	    	 	  <ul id="saleListData"></ul>
+	    	 	  <script id="saleList" type="text/html">
+			       
+				        {{each}}
+					      	<li>
+	      	    	 	  		<a href="#" class="wbox">
+	      	    	 	  			<div class="pro-img">
+	      	    	 	  				<img data-src="http://image4.suning.cn/uimg/MTS/Prodisplay/1422329443681668817.jpg">
+	      	    	 	  				<div class="pro-hot">01</div>
+	      	    	 	  			</div>
+	      	    	 	  			<div class="wbox-flex">
+	      	    	 	  				  <div class="pro-text">111iPhoneiPhoneiPhoneiPhoneiPhoneiPhoneiPhoneiPhoneiPhoneiPhoneiPhoneiPhoneiPhoneiPhoneiPhoneiPhoneiPhoneiPhoneiPhoneiPhoneiPhoneiPhoneiPhoneiPhoneiPhoneiPhoneiPhoneiPhoneiPhoneiPhone</div>
+	      	    	 	  				  <div class="pro-sprice">&yen;4899</div>
+	      	    	 	  			</div>
+	      	    	 	  		</a>
+	      		 	  		</li>
+						{{/each}}
+				   
+			      </script>
+	    	 </div>
+	    	
+	    </section>
+
+      
+
+
+    <!--loading more [[-->
+
+	<section class="sale-btn" >
+    	<div class="list-loading"  id="loadMore"><i></i><span>正在加载更多</span></div>
+    	<div class="list-loading tc" id="noData">暂无数据</div>
+    	<div class="list-loading tc " id="noMore">已经看完了</div>
+    </section>
+    <!--loading more ]]-->
+    </section>
+<script type="text/javascript" src="http://m.suning.com/RES/wap/common/script/lib/zepto/1.1.4/zepto.min.js"></script>
+<script type="text/javascript" src="http://m.suning.com/RES/wap/common/script/module/lazyload/1.0.0/lazyload.js"></script>
+<script type="text/javascript" src="script/tabSlide.js"></script>
+<script type="text/javascript" src="script/hotSale.js"></script>
+</body>
+</html>
