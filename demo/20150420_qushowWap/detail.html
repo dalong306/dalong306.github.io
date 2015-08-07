@@ -261,6 +261,7 @@
                 if (timeOutDateTime - loadDateTime < 5000){
                     //如果安装了应用宝
                     if (navigator.userAgent.match(/MicroMessenger/i)) {//微信环境 
+                       alert(1);
                         window.location.href = "guide.html?adTypeCode=1059&adId="+_contentId ;
                         //window.location = "http://a.app.qq.com/o/simple.jsp?pkgname=com.suning.mobile.ebuy&g_f=992129";
                         return ;
