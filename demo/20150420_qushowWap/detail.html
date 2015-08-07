@@ -250,21 +250,19 @@
 
 
     //打开客户端
-    var iphoneUrl = 'com.suning.SuningEbuy://';
-    var androidUrl = 'suning://m.suning.com/index';
-    var dlp = 'http://m.suning.com/search/dlp.html';
+    var iphoneUrl = "com.suning.suningebuy://wapToEbuy?adTypeCode=1059&adId="+contentId ;
+    var androidUrl = "suning://m.suning.com/index?adTypeCode=1059&adId="+contentId;
+    var dlp = 'http://mapp.suning.com/a.php?s=qrcode/offline&f=znwplb&pack=com.suning.mobile.ebuy';
     $('.open-btn').on('click',function(){
-         console.log(window.navigator.userAgent)
-        //微信环境 
-        //wap环境 
         if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)){
             var loadDateTime = new Date();
             window.setTimeout(function(){
                 var timeOutDateTime = new Date();
                 if (timeOutDateTime - loadDateTime < 5000){
                     //如果安装了应用宝
-                    if (navigator.userAgent.match(/MicroMessenger/i)) {
-                        window.location = "http://a.app.qq.com/o/simple.jsp?pkgname=com.suning.mobile.ebuy&g_f=992129";
+                    if (navigator.userAgent.match(/MicroMessenger/i)) {//微信环境 
+                        window.location = "guide.html?adTypeCode=1059&adId="+contentId ;
+                        //window.location = "http://a.app.qq.com/o/simple.jsp?pkgname=com.suning.mobile.ebuy&g_f=992129";
                         return ;
                     }
                     window.location.href = "https://itunes.apple.com/cn/app/id424598114?l=en&mt=8";
@@ -276,7 +274,8 @@
         }else if (navigator.userAgent.match(/android/i)){
             //如果安装了应用宝
             if (navigator.userAgent.match(/MicroMessenger/i)) {
-                window.location = "http://a.app.qq.com/o/simple.jsp?pkgname=com.suning.mobile.ebuy&g_f=992129";
+                window.location = "guide.html?adTypeCode=1059&adId="+contentId;
+                //window.location = "http://a.app.qq.com/o/simple.jsp?pkgname=com.suning.mobile.ebuy&g_f=992129";
                 return ;
             }
             var isBlur = true;

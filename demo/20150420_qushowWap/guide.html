@@ -28,14 +28,14 @@
 </head>
 <body>
 <!-- ios引导页[[ -->
-<div id="iosGuide" class="ios-guide">
+<div id="iosGuide" class="ios-guide hide">
     <img src="images/ios-guide.png">
 </div>
 <!-- ios引导页]] -->
 
 
 <!-- android引导页[[ -->
-<div id="androidGuide" class="android-guide">
+<div id="androidGuide" class="android-guide hide">
      <img src="images/android-guide.png">
 </div>
 <!-- android引导页]] -->
@@ -43,7 +43,7 @@
 
 
 <!-- 下载引导页[[ -->
-<div id="downLoadGuide" class="download-guide">
+<div id="downLoadGuide" class="download-guide hide">
     <!-- 公用头部导航 -->
     <div class="sn-nav">
         <div class="sn-nav-back"><a href="javascript:history.back(1)" class="sn-iconbtn">返回</a></div>
@@ -66,7 +66,32 @@
 
 
 
-<script type="text/javascript" src="http://m.suning.com/RES/wap/common/script/lib/zepto/1.1.4/zepto.min.js"></script>
+<script type="text/javascript">
+    var search = window.location.search;
+    var iphoneUrl = "com.suning.suningebuy://wapToEbuy?"+search ;//打开iphone客户端
+    var androidUrl = "suning://m.suning.com/index?"+search;//打开android客户端
+//微信环境
+     if (navigator.userAgent.match(/MicroMessenger/i)) {
+             if(navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)){
+                  document.getElmentById("iosGuide").style.display = "block";
 
+             }else if (navigator.userAgent.match(/android/i)){
+                document.getElmentById("androidGuide").style.display = "block";
+
+             }
+     }else{//wap环境
+         document.getElmentById("downLoadGuide").style.display = "block";
+
+           if(navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)){
+                  window.location = iphoneUrl;
+
+             }else if (navigator.userAgent.match(/android/i)){
+                  window.location = androidUrl;
+             }
+
+          
+     }
+
+</script>
 </body>
 </html>
