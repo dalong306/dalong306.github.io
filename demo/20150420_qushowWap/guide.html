@@ -73,14 +73,14 @@
 //微信环境
      if (navigator.userAgent.match(/MicroMessenger/i)) {
              if(navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)){
-                  document.getElmentById("iosGuide").style.display = "block";
+                  document.getElementById("iosGuide").style.display = "block";
 
              }else if (navigator.userAgent.match(/android/i)){
-                document.getElmentById("androidGuide").style.display = "block";
+                document.getElementById("androidGuide").style.display = "block";
 
              }
      }else{//wap环境
-         document.getElmentById("downLoadGuide").style.display = "block";
+         document.getElementById("downLoadGuide").style.display = "block";
 
            if(navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)){
                   window.location = iphoneUrl;
