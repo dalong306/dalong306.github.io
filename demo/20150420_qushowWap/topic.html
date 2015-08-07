@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="wap-font-scale" content="no" />
+    <title>趣SHOW</title>
+    <link rel="stylesheet" type="text/css" href="http://sale.suning.com/images/advertise/cdn/style/base/2.0/base.css"/>
+    <style type="text/css">
+        .topic-wrap{padding-bottom:2.72rem;}
+        .topic-info{padding:.56rem;background:#FFF;}
+        .topic-info .img{height:6.4rem;overflow:hidden;}
+        .topic-info .img img{width:100%;}
+        .topic-info .info{padding:.1rem .4rem 1rem;border:solid #DCDCDC;border-width:0 1px 1px 1px;}
+        .topic-info .info .name{line-height:.96rem;font-size:.52rem;color:#707070;}
+        .topic-info .info .con{line-height:.76rem;font-size:.48rem;color:#909090;}
+        .topic-com ul{margin-top:.56rem;padding:.4rem .56rem 0;background:#FFF;overflow:hidden;}
+        .topic-com li{float:left;margin-bottom:.4rem;padding-right:.2rem;width:50%;}
+        .topic-com li:nth-child(2n+2){padding-left:.2rem;padding-right:0;}
+        .topic-com .com-item{border:1px solid #DCDCDC;}
+        .topic-com .com-item .img{width:100%;height:6.72rem;overflow:hidden;}
+        .topic-com .com-item .img img{width:100%;}
+        .topic-com .com-item .con{padding:.4rem;height:2rem;}
+        .topic-com .com-item .con img{display:block;margin-left:.14rem;width:1.2rem;height:1.2rem;}
+        .topic-com .com-item .con span{display:block;margin-top:.3rem;padding-left:.7rem;height:.56rem;line-height:.6rem;font-size:.44rem;color:#909090;}
+        .topic-com .com-item .con .like-cnt{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAcBAMAAACE1hKaAAAABGdBTUEAALGPC/xhBQAAAB5QTFRFAAAAkZGRkZGRkZGRkZGRkZGRkZGRkZGRAAAAkZGRJewAaQAAAAl0Uk5TAIvn0lkpErEA7oGCeQAAAN1JREFUGNNtULEKwjAUvEpTV0UcOiqoZBNEoZuIIN1EqXPVwdVFIZ9hI4T3t74ktUb0hrxccrnLewA2crIEIHqzPhdciMiUSBTXDnM1KI/ZAmfqF6kBIl2yxkDd+Ins4PRkTZKt9ZZrPkZ+tSb50B6j/YRaug2549ggszrg4FahIUt8kFQghKCfe+9Xg/18Xg3Oaz0Cnk4R07ahgvhxOm/4zmrb+i0Q0nolalTzlYEfiI+MqI5KfYR6J8Xu4lI1P9vx/ERjw8bZHHsdNHKuCnkP+1RkvvqO3OgDdPEfL1LNMeF1BWjyAAAAAElFTkSuQmCC) no-repeat 0 0;background-size:.6rem .56rem;}
+        .topic-com .com-item .con .comment-cnt{background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAcBAMAAACE1hKaAAAABGdBTUEAALGPC/xhBQAAABVQTFRFAAAAkZGRkZGRkZGRkZGRAAAAkZGR5AtduQAAAAZ0Uk5TABeN4kUAhD2dawAAAFlJREFUGNNjcE5DBiYMZij8ZIY0BwYEYEljSGNABvTgs6UlwDE2Pp3dgxYeZkBXsJghwssZyFdDCk8GtgThZAUkPWwpZobIRrKlJaFYwZbsgMpXROEysKDwAFRTLEbdcBtKAAAAAElFTkSuQmCC) no-repeat 0 0;background-size:.6rem .56rem;}
+        .snapp-topic{position:fixed;bottom:0;left:0;padding:.56rem;width:100%;height:2.72rem;background:rgba(255,255,255,.9);overflow:hidden;}
+        .snapp-topic .open-btn{display:block;width:100%;height:1.6rem;background:#FC6620;border-radius:.2rem;font-size:.6rem;line-height:1.6rem;text-align:center;color:#FFF;}
+
+        .topic-info .info{position:relative;overflow:hidden;}
+        .topic-info .info .conBox{max-height:1.4rem;overflow:hidden;-webkit-transition:max-height .2s linear 0s;}
+        .topic-info .info .conBox.auto{max-height:100%;}
+        .topic-info .info .arrow-down{display:none;position:absolute;left:50%;bottom:0;width:2rem;height:1rem;margin-left:-0.5rem;}
+        .topic-info .info .arrow-down:before{content:"";display:block;width:0.24rem;height:0.24rem;margin:0.25rem auto 0;border-style:solid;border-color:#747474;border-width:1px 1px 0 0;-webkit-transform:rotate(135deg);  }
+        .topic-info .info .arrow-down.arrow-up:before{margin-top:.4rem;-webkit-transform:rotate(-45deg);}
+    </style>
+</head>
+<body>
+<div class="topic-wrap">
+
+    <div class="topic-info" id="topicInfo">
+
+    </div>
+    <div class="topic-com" id="topicCom">
+
+    </div>
+</div>
+<div class="snapp-topic">
+    <a href="javascript:;" class="open-btn">打开易购客户端看更多精彩SHOW</a>
+</div>
+
+<script type="text/javascript" src="http://m.suning.com/RES/wap/common/script/lib/zepto/1.1.4/zepto.min.js"></script>
+<script type="text/javascript">
+   var fontSize = parseInt($("html").css("font-size"));
+    var _topicId = '103';
+    var _topicUrl = 'http://show.msit.cnsuning.com/topic/info/'+_topicId+'.html';//话题详情接口
+    var _commentUrl = 'http://show.msit.cnsuning.com/topic/content/new_'+_topicId+'_1_4_.do';//话题内容数据接口
+    //话题详情
+    $.ajax({
+        type:'get',
+        url:_topicUrl,
+        dataType:'json',
+        success:function(result){
+            var _topic = result.data,
+                _topicHtml = '',
+                _con = _topic.content.replace(/\r\n/ig,'<br/>');
+            _topicHtml = '<div class="img"><img src="'+_topic.imageUrl+'" alt=""/></div>'
+            +            '<div class="info">'
+            +               '<p class="name">#'+_topic.name+'#</p>'
+            +               '<div class="conBox">'
+            +               '<p class="con">'+_con+'</p></div>'
+            +               '<em class="arrow-down" id="arrow"></em>'
+            +            '</div>';
+
+            $('#topicInfo').append(_topicHtml);
+            //超过2行展示收起箭头
+            if($(".conBox").find(".con").height()/ fontSize >= 2){
+                $(".arrow-down").show();
+            }
+        },
+        error:function(){}
+    });
+    //话题内容
+    $.ajax({
+        type:'get',
+        url:_commentUrl,
+        dataType:'json',
+        success:function(result){
+            var _comment = {},
+                _commentHtml = '';
+            _comment.list = result.data;
+            if(_comment.list && _comment.list.length > 0){
+                template.helper('cntFormat',function(c){
+                    if(c/10000 > 1){
+                        c = parseFloat(c/10000,1).toFixed(1)+'万';
+                    }
+                    return c;
+                });
+                _commentHtml = '<ul>'
+                +              '{{each list as value}}'
+                +                  '<li>'
+                +                       '<div class="com-item">'
+                +                           '<div class="img"><img src="{{value.smallImageUrl}}" alt=""/></div>'
+                +                           '<div class="con wbox">'
+                +                               '<span class="like-cnt wbox-flex">{{cntFormat(value.likeCnt)}}</span>'
+                +                               '<span class="comment-cnt wbox-flex">{{cntFormat(value.commentCnt)}}</span>'
+                +                               '<img src="{{value.faceUrl}}" alt=""/>'
+                +                            '</div>'
+                +                       '</div>'
+                +                   '</li>'
+                +               '{{/each}}'
+                +               '</ul>';
+                var _commentRender = template.compile(_commentHtml);
+                $('#topicCom').append(_commentRender(_comment));
+            }
+        },
+        error:function(){}
+    });
+    //打开客户端
+    var iphoneUrl = 'com.suning.SuningEbuy://';
+    var androidUrl = 'suning://m.suning.com/index';
+    var dlp = 'http://m.suning.com/search/dlp.html';
+    $('.open-btn').on('click',function(){
+        if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)){
+            var loadDateTime = new Date();
+            window.setTimeout(function(){
+                var timeOutDateTime = new Date();
+                if (timeOutDateTime - loadDateTime < 5000){
+                    //如果安装了应用宝
+                    if (navigator.userAgent.match(/MicroMessenger/i)) {
+                        window.location = "http://a.app.qq.com/o/simple.jsp?pkgname=com.suning.mobile.ebuy&g_f=992129";
+                        return ;
+                    }
+                    window.location.href = "https://itunes.apple.com/cn/app/id424598114?l=en&mt=8";
+                }else{
+                    window.close();
+                }
+            },2000);
+            window.location = iphoneUrl;
+        }else if (navigator.userAgent.match(/android/i)){
+            //如果安装了应用宝
+            if (navigator.userAgent.match(/MicroMessenger/i)) {
+                window.location = "http://a.app.qq.com/o/simple.jsp?pkgname=com.suning.mobile.ebuy&g_f=992129";
+                return ;
+            }
+            var isBlur = true;
+            window.location = androidUrl;
+            //下载 客户端链接
+            window.onblur = function(){
+                isBlur = false;
+                window.location.href = dlp;
+            };
+            setTimeout(function(){
+                if(isBlur){
+                    window.location.href = dlp;
+                }
+            },2000);
+        }
+    });
+
+    //展开收起
+
+    $("#topicInfo").delegate(".arrow-down","click", function(){
+               var conBox = $(this).siblings(".conBox");
+                if(!$(this).hasClass("arrow-up")){
+                    $(this).addClass("arrow-up");
+                    conBox.css({maxHeight:parseFloat(conBox.find(".con").height() / fontSize)+"rem"});
+                }else{
+                    $(this).removeClass("arrow-up");
+                    conBox.css({maxHeight:"1.4rem"});
+                }
+    });
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="wap-font-scale" content="no" />
+    <title>趣SHOW内容</title>
+    <link rel="stylesheet" type="text/css" href="http://sale.suning.com/images/advertise/cdn/style/base/2.0/base.css"/>
+    <style type="text/css">
+        .ww{max-width:15rem;margin:0 auto;}
+        .sn-nav{background:#F8F8F8;}
+        .sn-nav-title{color:#333;}
+        .sn-nav-back{border-color:#333;}
+        .submit-comment {
+            position: absolute;
+            top: 0;
+            right: 1rem;
+            z-index: 97
+        }
+        .comment-text{width:100%;height:4rem;background:#FFF;border:0;resize:none;}
+    </style>
+</head>
+<body>
+
+<div class="comment ww">
+    <!-- 公用头部导航 [[-->
+    <div class="sn-nav sn-block">
+        <div class="sn-nav-back"><a class="sn-iconbtn" href="javascript:history.go(-1);">返回</a></div>
+        <div class="sn-nav-title of">
+            评论
+        </div>
+        <a href="javascript:void(0);" id="submitComment" class="submit-comment" >提交</a>
+    </div>
+    <!-- 公用头部导航 ]]-->
+
+    <div class="comment-area">
+        <textarea class="comment-text" ></textarea>
+    </div>
+
+    </div>
+<script type="text/javascript" src="http://m.suning.com/RES/wap/common/script/lib/zepto/1.1.4/zepto.min.js"></script>
+<script type="text/javascript" src="http://m.suning.com/RES/wap/common/script/module/alertBox/2.0.0/alertBox.js"></script>
+<script type="text/javascript">
+    (function(){
+        var url = "http://show.msit.cnsuning.com/comment/private/addComment.do";//增加评论服务
+        var contentId = getParams()["contentId"];
+        var targetCommentId = getParams()["targetCommentId"];
+
+        //提交评论
+        $("#submitComment").unbind().on("click", function(){
+            if(!$(".comment-text").val().length) return;
+            var data = "{contentId:"+contentId+",comment:"+$(".comment-text").val()+",targetCommentId:"+targetCommentId+"}";
+            $.ajax({
+                type: "post",
+                url: url,
+                dataType: "json",
+               data: {data: data},
+                beforeSend: function(){
+
+                },
+                success: function(data){
+                   if(data.code == 1){
+                       window.location.href = "detail.html";
+                   }else{
+                       AlertBox({
+                           type: "mini",
+                           msg:"评价失败！"
+                       });
+                   }
+                },
+                error: function(){
+
+                }
+
+            });
+        });
+        //解析url
+        function getParams(){
+            var search = window.location.search;
+            var content = search.slice(search.indexOf("?")+1).split("&");
+            var vars = [];
+            for(var i = 0, len = content.length; i < len; i++){
+                var hash = content[i].split("=");
+                vars.push(hash[0]);
+                vars[hash[0]] = hash[1];
+            }
+            return vars;
+        }
+
+    })();
+</script>
+</body>
+</html>
