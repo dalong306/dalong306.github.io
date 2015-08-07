@@ -261,7 +261,7 @@
                 if (timeOutDateTime - loadDateTime < 5000){
                     //如果安装了应用宝
                     if (navigator.userAgent.match(/MicroMessenger/i)) {//微信环境 
-                       alert(1);
+               
                         window.location.href = "guide.html?adTypeCode=1059&adId="+_contentId ;
                         //window.location = "http://a.app.qq.com/o/simple.jsp?pkgname=com.suning.mobile.ebuy&g_f=992129";
                         return ;
@@ -271,7 +271,7 @@
                     window.close();
                 }
             },2000);
-            window.location = iphoneUrl;
+            window.location.href = iphoneUrl;
         }else if (navigator.userAgent.match(/android/i)){
             //如果安装了应用宝
             if (navigator.userAgent.match(/MicroMessenger/i)) {
@@ -280,7 +280,7 @@
                 return ;
             }
             var isBlur = true;
-            window.location = androidUrl;
+            window.location.href = androidUrl;
             //下载 客户端链接
             window.onblur = function(){
                 isBlur = false;
