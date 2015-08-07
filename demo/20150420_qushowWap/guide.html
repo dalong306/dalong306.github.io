@@ -81,12 +81,13 @@
              }
      }else{//wap环境
          document.getElementById("downLoadGuide").style.display = "block";
-
+            
            if(navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)){
           
                   window.location.href = iphoneUrl;
 
              }else if (navigator.userAgent.match(/android/i)){
+                 alert(androidUrl)
                   window.location.href = androidUrl;
              }
 
