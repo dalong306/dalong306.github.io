@@ -83,11 +83,11 @@
          document.getElementById("downLoadGuide").style.display = "block";
 
            if(navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)){
-                alert(iphoneUrl)
-                  window.location = iphoneUrl;
+          
+                  window.location.href = iphoneUrl;
 
              }else if (navigator.userAgent.match(/android/i)){
-                  window.location = androidUrl;
+                  window.location.href = androidUrl;
              }
 
           
